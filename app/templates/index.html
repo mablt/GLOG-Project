@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<meta charset="UTF-8">
+    <title>Visualisation</title>
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="/static/jquery-1.7.min.js" charset="utf-8"></script>
+    <script src="/static/Three49custom.js" charset="utf-8"></script>
+    <script src="/static/GLmol.js" charset="utf-8"></script>
+    <script src="/static/navbarActions.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+
+  <div class="container">
+    <div class="row"></div>
+    <div class="row" id="header-row">
+    <div class="column1" id="nav-column">
+      <nav class="main-nav">
+        <ul class="main-nav-ul">
+        <li><a id= "nav-title" href="#">- Espèces -</a></li>
+        <ul class="spieces-nav-ul">
+          <li> <a href="#" >Rana castebeiana <span class = "sub-arrow"></span></a>
+                    <ul class="protein-nav-ul">
+                      <li> <a href="#" >P0D0X0</a> </li>
+                      <li> <a href="#" >P07797</a> </li>
+                      <li> <a href="#" >P31226</a> </li>
+                      <li> <a href="#" >P40757</a> </li>
+                      <li> <a href="#" >P51464</a> </li>
+                      <li> <a href="#" >Q7T1K4</a> </li>
+                      <li> <a href="#" >Q07081</a> </li>
+                      <li> <a href="#" >Q91309</a> </li>
+                      <li> <a href="#" >Q91311</a> </li>
+                      <li> <a href="#" >Q91312</a> </li>
+                      <li> <a href="#" >Q92104</a> </li>
+                    </ul>
+                  </li>
+          </ul>
+          <ul class="spieces-nav-ul">
+                  <li> <a href="#" >Rana esculenta <span class = "sub-arrow"></span></a>
+                    <ul class="protein-nav-ul">
+                      <li> <a href="#" >P02507</a> </li>
+                      <li> <a href="#" >P02589</a> </li>
+                      <li> <a href="#" >P50501</a> </li>
+                      <li> <a href="#" >Q0MVP0</a> </li>
+                      <li> <a href="#" >Q333S9</a> </li>
+                      <li> <a href="#" >Q92105</a> </li>
+                    </ul>
+                  </li> 
+                </ul>
+                <ul class="spieces-nav-ul">
+                  <li> <a href="#" >  Rana temporaria<span class = "sub-arrow"></span></a> 
+                    <ul class="protein-nav-ul">
+                      <li> <a href="#">P02508</a> </li>
+                      <li> <a href="#">P02530</a> </li>
+                      <li> <a href="#">P02532</a> </li>
+                      <li> <a href="#">P07317</a> </li>
+                      <li> <a href="#">P13105</a> </li>
+                      <li> <a href="#">P56516</a> </li>
+                    </ul>
+                  </li>
+                </ul>
+                <!-- LEZARDS -->
+                <ul class="spieces-nav-ul">
+                  <li> <a href="#">  Podarcis siculus<span class = "sub-arrow"></span></a> 
+                    <ul class="protein-nav-ul">
+                      <li> <a href="#">  Q4U4D2</a> </li>
+                      <li> <a href="#">  Q708T3</a> </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="spieces-nav-ul">
+                  <li> <a href="#">Zootoca vivipara<span class = "sub-arrow"></span></a> 
+                    <ul class="protein-nav-ul">
+                      <li> <a href="#"> O48089</a> </li>
+                      <li> <a href="#"> P35578</a> </li>
+                    </ul>
+                  </li>
+                </ul>
+                <!-- PAPILLONS -->
+                <ul class="spieces-nav-ul">
+                  <li> <a href="#" >  Papilonoidea<span class = "sub-arrow"></span></a> 
+                    <ul class="protein-nav-ul">
+                      <li> <a href="#"> P09464</a> </li>
+                      <li> <a href="#"> P84156</a> </li>
+                      <li> <a href="#"> Q6EV21</a> </li>
+                      <li> <a href="#">  Q6EV23</a> </li>
+                      <li> <a href="#">  Q9GV36</a> </li>
+                      <li> <a href="#">  Q9U8Q4</a> </li>
+                      <li> <a href="#">  Q25214</a> </li>
+                      <li> <a href="#">  Q27756</a> </li>
+                      <li> <a href="#">  Q27902</a> </li>
+                      <li> <a href="#">  Q95036</a> </li>
+                    </ul>
+                  </li>
+                </ul>
+                <!-- VIPERES -->
+                <ul class="spieces-nav-ul">
+                  <li> <a href="#" >  Vipera ammodytes<span class = "sub-arrow"></span></a> 
+                    <ul class="protein-nav-ul">
+                      <li> <a href="#">  A0A1I9KNP0</a> </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="spieces-nav-ul">
+                  <li> <a href="#"> Vipera aspis<span class = "sub-arrow"></span></a> 
+                    <ul class="protein-nav-ul">
+                      <li> <a href="#"> Q8JFG0</a> </li>
+                      <li> <a href="#"> Q10754</a> </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="spieces-nav-ul">
+                  <li> <a href="#" >  Vipera berus<span class = "sub-arrow"></span></a> 
+                    <ul class="protein-nav-ul">
+                      <li> <a href="#"> A4VBF0</a> </li>
+                      <li> <a href="#"> B7FDI0</a> </li>
+                      <li> <a href="#"> B7FDI1</a> </li>
+                      <li> <a href="#"> E51GX2</a> </li>
+                      <li> <a href="#"> E51GX3</a> </li>
+                      <li> <a href="#"> P0C2D7</a> </li>
+                      <li> <a href="#"> P0C6A6</a> </li>
+                      <li> <a href="#"> P0C6A7</a> </li>
+                      <li> <a href="#"> P31854</a> </li>
+                      <li> <a href="#"> Q1RP78</a> </li>
+                      <li> <a href="#"> Q1RP79</a> </li>
+                    </ul>
+                  </li>
+                </ul>
+        
+        
+        </ul>
+      
+      </nav>
+      
+      
+      
+      </div>
+    <div class="column2">
+      <div id=glmol_file>
+        <canvas id = visu_canvas></canvas>
+      </div>
+      
+      
+    </div>
+    <div class="column3" id="info-column">
+      <div class="info-table">
+      <table>
+      <tr>
+        <td>Nom de la protéine</td>
+        <td>--------- </td>
+        </tr>
+      <tr>
+        <td>Organisme</td>
+        <td>--------- </td>
+      </tr>
+      <tr>
+        <td>Nom du gène</td>
+        <td>--------- </td>
+      </tr>
+      </table>
+    </div>
+      
+      
+      </div>
+    
+    
+    
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    </div>
+  
+  
+  </body>
+</html> 
