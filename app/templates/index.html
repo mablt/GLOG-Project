@@ -11,7 +11,6 @@
     <script src="/static/jquery-1.7.min.js" charset="utf-8"></script>
     <script src="/static/Three49custom.js" charset="utf-8"></script>
     <script src="/static/GLmol.js" charset="utf-8"></script>
-    <script src="/static/navbarActions.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -22,46 +21,47 @@
     <div class="row" id="header-row">
     <div class="column1" id="nav-column">
       <nav class="main-nav">
+        <form action = "http://localhost:5000/result" method = "POST">
         <ul class="main-nav-ul">
+        
         <li><a id= "nav-title" href="#">- Espèces -</a></li>
         <ul class="spieces-nav-ul">
           <li> <a href="#" >Rana castebeiana <span class = "sub-arrow"></span></a>
                     <ul class="protein-nav-ul">
-                      <li> <a href="#" >P0D0X0</a> </li>
-                      <li> <a href="#" >P07797</a> </li>
-                      <li> <a href="#" >P31226</a> </li>
-                      <li> <a href="#" >P40757</a> </li>
-                      <li> <a href="#" >P51464</a> </li>
-                      <li> <a href="#" >Q7T1K4</a> </li>
-                      <li> <a href="#" >Q07081</a> </li>
-                      <li> <a href="#" >Q91309</a> </li>
-                      <li> <a href="#" >Q91311</a> </li>
-                      <li> <a href="#" >Q91312</a> </li>
-                      <li> <a href="#" >Q92104</a> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P0D0X0" >P0D0X0</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P07797" >P07797</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P31226" >P31226</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P40757" >P40757</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P51464" >P51464</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q7T1K4" >Q7T1K4</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q07081" >Q07081</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q91309" >Q91309</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q91311" >Q91311</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q91312" >Q91312</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q92104" >Q92104</button> </li>
                     </ul>
-                  </li>
           </ul>
           <ul class="spieces-nav-ul">
                   <li> <a href="#" >Rana esculenta <span class = "sub-arrow"></span></a>
                     <ul class="protein-nav-ul">
-                      <li> <a href="#" >P02507</a> </li>
-                      <li> <a href="#" >P02589</a> </li>
-                      <li> <a href="#" >P50501</a> </li>
-                      <li> <a href="#" >Q0MVP0</a> </li>
-                      <li> <a href="#" >Q333S9</a> </li>
-                      <li> <a href="#" >Q92105</a> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value = "P02507">P02507</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value = "P02589">P02589</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value = "P50501">P50501</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value = "Q0MVP0">Q0MVP0</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value = "Q333S9">Q333S9</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value = "Q92105">Q92105</button> </li>
                     </ul>
                   </li> 
                 </ul>
                 <ul class="spieces-nav-ul">
                   <li> <a href="#" >  Rana temporaria<span class = "sub-arrow"></span></a> 
                     <ul class="protein-nav-ul">
-                      <li> <a href="#">P02508</a> </li>
-                      <li> <a href="#">P02530</a> </li>
-                      <li> <a href="#">P02532</a> </li>
-                      <li> <a href="#">P07317</a> </li>
-                      <li> <a href="#">P13105</a> </li>
-                      <li> <a href="#">P56516</a> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P02508">P02508</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P02530">P02530</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P02532">P02532</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P07317">P07317</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P13105">P13105</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P56516">P56516</button> </li>
                     </ul>
                   </li>
                 </ul>
@@ -69,16 +69,16 @@
                 <ul class="spieces-nav-ul">
                   <li> <a href="#">  Podarcis siculus<span class = "sub-arrow"></span></a> 
                     <ul class="protein-nav-ul">
-                      <li> <a href="#">  Q4U4D2</a> </li>
-                      <li> <a href="#">  Q708T3</a> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q4U4D2">  Q4U4D2</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q708T3">  Q708T3</button> </li>
                     </ul>
                   </li>
                 </ul>
                 <ul class="spieces-nav-ul">
                   <li> <a href="#">Zootoca vivipara<span class = "sub-arrow"></span></a> 
                     <ul class="protein-nav-ul">
-                      <li> <a href="#"> O48089</a> </li>
-                      <li> <a href="#"> P35578</a> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="O48089"> P35578</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P35578"> O48089</button> </li>
                     </ul>
                   </li>
                 </ul>
@@ -86,16 +86,16 @@
                 <ul class="spieces-nav-ul">
                   <li> <a href="#" >  Papilonoidea<span class = "sub-arrow"></span></a> 
                     <ul class="protein-nav-ul">
-                      <li> <a href="#"> P09464</a> </li>
-                      <li> <a href="#"> P84156</a> </li>
-                      <li> <a href="#"> Q6EV21</a> </li>
-                      <li> <a href="#">  Q6EV23</a> </li>
-                      <li> <a href="#">  Q9GV36</a> </li>
-                      <li> <a href="#">  Q9U8Q4</a> </li>
-                      <li> <a href="#">  Q25214</a> </li>
-                      <li> <a href="#">  Q27756</a> </li>
-                      <li> <a href="#">  Q27902</a> </li>
-                      <li> <a href="#">  Q95036</a> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P09464">  P09464</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P84156">  P84156</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q6EV21">  Q6EV21</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q6EV23">  Q6EV23</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q9GV36">  Q9GV36</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q9U8Q4">  Q9U8Q4</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q25214">  Q25214</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q27756">  Q27756</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q27902">  Q27902</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q95036">  Q95036</button> </li>
                     </ul>
                   </li>
                 </ul>
@@ -103,50 +103,52 @@
                 <ul class="spieces-nav-ul">
                   <li> <a href="#" >  Vipera ammodytes<span class = "sub-arrow"></span></a> 
                     <ul class="protein-nav-ul">
-                      <li> <a href="#">  A0A1I9KNP0</a> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="A0A1I9KNP0">  A0A1I9KNP0</button> </li>
                     </ul>
                   </li>
                 </ul>
                 <ul class="spieces-nav-ul">
                   <li> <a href="#"> Vipera aspis<span class = "sub-arrow"></span></a> 
                     <ul class="protein-nav-ul">
-                      <li> <a href="#"> Q8JFG0</a> </li>
-                      <li> <a href="#"> Q10754</a> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q8JFG0"> Q8JFG0</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q10754"> Q10754</button> </li>
                     </ul>
                   </li>
                 </ul>
                 <ul class="spieces-nav-ul">
                   <li> <a href="#" >  Vipera berus<span class = "sub-arrow"></span></a> 
                     <ul class="protein-nav-ul">
-                      <li> <a href="#"> A4VBF0</a> </li>
-                      <li> <a href="#"> B7FDI0</a> </li>
-                      <li> <a href="#"> B7FDI1</a> </li>
-                      <li> <a href="#"> E51GX2</a> </li>
-                      <li> <a href="#"> E51GX3</a> </li>
-                      <li> <a href="#"> P0C2D7</a> </li>
-                      <li> <a href="#"> P0C6A6</a> </li>
-                      <li> <a href="#"> P0C6A7</a> </li>
-                      <li> <a href="#"> P31854</a> </li>
-                      <li> <a href="#"> Q1RP78</a> </li>
-                      <li> <a href="#"> Q1RP79</a> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="A4VBF0"> A4VBF0</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="B7FDI0"> B7FDI0</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="B7FDI1"> B7FDI1</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="E51GX2"> E51GX2</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="E51GX3"> E51GX3</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P0C2D7"> P0C2D7</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P0C6A6"> P0C6A6</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P0C6A7"> P0C6A7</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="P31854"> P31854</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q1RP78"> Q1RP78</button> </li>
+                      <li> <button type="button" id="dpdwn" name = "prot_button" value ="Q1RP79"> Q1RP79</button> </li>
                     </ul>
                   </li>
                 </ul>
         
         
         </ul>
-      
+      </form>
       </nav>
       
       
       
       </div>
     <div class="column2">
-      <div id=glmol_file>
-        <canvas id = visu_canvas></canvas>
+      <div id="glmol_file">
+        <canvas></canvas>
+        <textarea id = "glmol_file_src" style="display: none;">
+            {{ protein }}
+        </textarea>
+        
       </div>
-      
-      
     </div>
     <div class="column3" id="info-column">
       <div class="info-table">
@@ -181,7 +183,10 @@
     
     
     </div>
-  
-  
+<!--   
+    <script>
+      var glmolFichier = new GLmol("glmol_file", true);
+      glmolFichier.loadMolecule();
+    </script> -->
   </body>
 </html> 

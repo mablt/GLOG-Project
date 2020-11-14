@@ -128,6 +128,21 @@ li{
     padding-top:200px;
 	background-color: #B4A0A0;
 }
+#dpdwn{
+	background-color: #B4A0A0;
+	color : #3D3D3D;
+	width: 200px;
+	border: none;
+	border-bottom: dotted #3D3D3D;
+	font-family:  Verdana, Geneva, sans-serif;
+
+
+
+}
+#dpdwn:hover{
+	background-color: #5C4A4B;
+	color : white;
+}
 
 td{
 	padding: 6px;
