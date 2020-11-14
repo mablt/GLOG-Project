@@ -6,79 +6,35 @@ li{
 	list-style: none;
 }
 
-.main-nav{
-	background-color: #B4A0A0;
-}
-.main-nav a{
-	letter-spacing: .2em;
-	color: #3D3D3D;
-	display: block;
-	padding: 10px 10px 10px 20px;
-	margin-right: 20px;
-	border-bottom: dotted #3D3D3D;
-}
-
-.main-nav .sub-arrow:after{
-	content:'\203A';	
-	float:right;
-	transform: rotate(90deg);
-	-webkit-transform:rotate(90deg);
-	-moz-transform:rotate(90deg);
-}
-
-.main-nav li:hover .sub-arrow:after{
-	content:'\2039';
-}
-#nav-title{
-	font-weight: bold;
-}
-.spieces-nav-ul{
-	padding: 0;
-	font-style: italic;
-}
-
-.spieces-nav-ul a:hover{
-	background-color: #5C4A4B;
-	color : white;
-	
-}
-.spieces-nav-ul ul {
-	display: none;
-	font-style: normal;
-}
-
-.spieces-nav-ul li:hover ul{
-	display: block;
-}
-
-a{
-	text-decoration: none;
-}
-li{
-	list-style: none;
-}
-
 
 #header-row{
-	height: 200px;
-	background-color: #B4A0A0;
+	height: 100px;
+	background-color: white;
+	border-bottom : solid #3D3D3D;
 }
 .column1{
-  float:left;
-  width : 30%;
-	background-color: #B4A0A0;
+	margin-top: 100px ;
+  	float:left;
+  	width : 30%;
+	background-color: white;
+	border : solid #3D3D3D;
+	border-top: none;
 }
 .column2{
-  width:40%;
+	margin-top: 100px ;
+	width:40%;
+	border-top: none;
 }
 .column3{
-  float:right;
-  background-color: #B4A0A0;
-  width : 30%;
+	margin-top: 100px ;
+  	float:right;
+  	background-color: white;
+ 	width : 30%;
+	border : solid #3D3D3D;
+	border-top: none;
 }
 .main-nav{
-	background-color: #B4A0A0;
-	padding-top: 200px 
+	background-color: white;
 }
 .main-nav a{
 	letter-spacing: .2em;
@@ -108,11 +64,7 @@ li{
 	font-style: italic;
 }
 
-.spieces-nav-ul a:hover{
-	background-color: #5C4A4B;
-	color : white;
 	
-}
 .spieces-nav-ul ul {
 	display: none;
 	font-style: normal;
@@ -123,13 +75,12 @@ li{
 }
 
 .info-table{
- 	
  	border-collapse: collapse;
-    padding-top:200px;
-	background-color: #B4A0A0;
+	background-color: white;
+	width:100%;
 }
 #dpdwn{
-	background-color: #B4A0A0;
+	background-color: white;
 	color : #3D3D3D;
 	width: 200px;
 	border: none;
@@ -140,7 +91,7 @@ li{
 
 }
 #dpdwn:hover{
-	background-color: #5C4A4B;
+	background-color: #929292;
 	color : white;
 }
 
