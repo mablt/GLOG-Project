@@ -5,6 +5,9 @@ a{
 li{
 	list-style: none;
 }
+h1{
+	align-content: center;
+}
 
 
 #header-row{
@@ -79,6 +82,23 @@ li{
 	background-color: white;
 	width:100%;
 }
+.actions{
+	border-top: solid #3D3D3D;
+}
+
+#actions-button{
+	width: 100%;
+	border: none;
+	border-bottom: solid #3D3D3D;
+	background-color: white;
+	font-family:  Verdana, Geneva, sans-serif;
+}
+
+#actions-button:hover{
+	background-color: #929292;
+	color : white;
+}
+
 #dpdwn{
 	background-color: white;
 	color : #3D3D3D;
