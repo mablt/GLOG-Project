@@ -3,17 +3,18 @@ import json
 
 ########################### LIKE SERVER2 BEFORE ###########################
 
-   
-# @app.route('/result', methods = ['POST', 'GET'])
 def getResponse(name):
-   response = requests.get("https://swissmodel.expasy.org/repository/uniprot/%s.pdb" %name)
+    response = requests.get("https://swissmodel.expasy.org/repository/uniprot/%s.pdb" %name)
     # Add ?provider=swissmodel after json to get the SwissModel data
     # https://swissmodel.expasy.org/repository/uniprot/P07900.pdb?sort=seqsim to get the best 
     # homology model or experimental structure in PDB format sorted by sequence similarity
-   # print(response.text)
-   #  exit()
-   # file = open(response, 'r')
-   return response.text
+    return response.text
+
+
+"""
+
+NOT USED
+
 
 # @app.route('/result', methods = ['POST', 'GET'])
 def jsonPrint(obj):
@@ -36,6 +37,7 @@ def print_pdb(protein):
    # print("protein id :", jsonBrutData['result']['uniprot_entries'][0]['id'])       # Get the id of the protein
    # return pdbBrutData
 
+"""
 
 ########################### LIKE SERVER1 BEFORE ###########################
 
