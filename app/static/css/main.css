@@ -11,10 +11,17 @@ h1{
 body{
 	margin: 0;
 }
+textarea{
+	margin:0;
+	padding:0;
+}
 .container{
 	margin : 0;
 }
 
+#visualisation-row{
+	height : 700px;
+}
 
 #header-row{
 	height: 100px;
@@ -23,7 +30,6 @@ body{
 }
 .column1{
 	margin : 0;
-	margin-top: 100px ;
   	float:left;
   	width : 30%;
 	background-color: white;
@@ -32,13 +38,13 @@ body{
 }
 .column2{
 	margin : 0;
-	margin-top: 100px ;
+	padding : 0;
 	width:40%;
 	border-top: none;
+	background-color: black;
 }
 .column3{
 	margin : 0;
-	margin-top: 100px ;
   	background-color: white;
  	width : 30%;
 	border : solid #3D3D3D;
@@ -83,6 +89,17 @@ body{
 
 .spieces-nav-ul li:hover ul{
 	display: block;
+}
+
+#glmol_file{
+	height: 400px;
+	margin: 0;
+	padding : 0;
+
+}
+#glmol_file_src{
+	margin:0;
+	padding: 0;
 }
 
 .info-table{
