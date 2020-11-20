@@ -1,3 +1,6 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 from app import app
 # ADJUSTMENT: import the library that will let us read environment variables
 import os
