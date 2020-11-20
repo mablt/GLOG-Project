@@ -16,8 +16,10 @@ def index():
 def get_pdb(id):
    # if request.method == "POST":
       # protein = print_pdb(request.form["nm"])
-   protein = getResponse(id)
-   return render_template("index.html", protein = protein)
+   data = getResponse(id)
+   return render_template("index.html", protein = data["pdb"], protein_id=data["protein_id"], 
+                          protein_name=data["protein_name"], organism=data["organism"], 
+                          protein_length=data["length"], gene_name=data["gene"])
  
 
 ########################### LIKE SERVER1 BEFORE ###########################

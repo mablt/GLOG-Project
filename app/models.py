@@ -4,11 +4,21 @@ import json
 ########################### LIKE SERVER2 BEFORE ###########################
 
 def getResponse(name):
-    response = requests.get("https://swissmodel.expasy.org/repository/uniprot/%s.pdb" %name)
+    url = "https://swissmodel.expasy.org/repository/uniprot/%s.pdb" %name
+    pdb_file = requests.get(url)
+    # A MODIFIER quand on aura fait toutes les requetes
+    data = {
+        'protein_id': "protein_id",
+        'protein_name': "protein_name",
+        'organism': "organism", 
+        'gene': "gene",
+        'length':  "length",
+        'pdb': pdb_file.text
+    }
     # Add ?provider=swissmodel after json to get the SwissModel data
     # https://swissmodel.expasy.org/repository/uniprot/P07900.pdb?sort=seqsim to get the best 
     # homology model or experimental structure in PDB format sorted by sequence similarity
-    return response.text
+    return data
 
 
 """

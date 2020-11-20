@@ -34,28 +34,17 @@
 							<ul class="spieces-nav-ul">
 								<li> <a href="#">Rana castebeiana <span class="sub-arrow"></span></a>
 									<ul class="protein-nav-ul">
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P0DOX0"
-												onclick="location.href ='/P0DOX0'">P0DOX0</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P07797"
-												onclick="location.href ='/P07797'">P07797</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P31226"
-												onclick="location.href ='/P31226'">P31226</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P40757"
-												onclick="location.href ='/P40757'">P40757</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P51464"
-												onclick="location.href ='/P51464'">P51464</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q7T1K4"
-												onclick="location.href ='/Q7T1K4'">Q7T1K4</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q07081"
-												onclick="location.href ='/Q07081'">Q07081</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q91309"
-												onclick="location.href ='/Q91309'">Q91309</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q91311"
-												onclick="location.href ='/Q91311'">Q91311</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q91312"
-												onclick="location.href ='/Q91312'">Q91312</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q92104"
-												onclick="location.href ='/Q92104'">Q92104</button> </li>
+										<li> <button type="button" id="dpdwn" name="prot_button" value="P0DOX0">P0DOX0</button> </li>
+										<li> <button type="button" id="dpdwn" name="prot_button" value="P07797">P07797</button> </li>
+										<li> <button type="button" id="dpdwn" name="prot_button" value="P31226">P31226</button> </li>
+										<li> <button type="button" id="dpdwn" name="prot_button" value="P40757">P40757</button> </li>
+										<li> <button type="button" id="dpdwn" name="prot_button" value="P51464">P51464</button> </li>
+										<li> <button type="button" id="dpdwn" name="prot_button" value="Q7T1K4">Q7T1K4</button> </li>
+										<li> <button type="button" id="dpdwn" name="prot_button" value="Q07081">Q07081</button> </li>
+										<li> <button type="button" id="dpdwn" name="prot_button" value="Q91309">Q91309</button> </li>
+										<li> <button type="button" id="dpdwn" name="prot_button" value="Q91311">Q91311</button> </li>
+										<li> <button type="button" id="dpdwn" name="prot_button" value="Q91312">Q91312</button> </li>
+										<li> <button type="button" id="dpdwn" name="prot_button" value="Q92104">Q92104</button> </li>
 									</ul>
 							</ul>
 							<ul class="spieces-nav-ul">
@@ -212,23 +201,23 @@
 					<table>
 						<tr>
 							<td>Nom de la protéine</td>
-							<td>--------- </td>
+							<td>{{protein_name}} </td>
 						</tr>
 						<tr>
 							<td>Organisme</td>
-							<td>--------- </td>
+							<td>{{organism}} </td>
 						</tr>
 						<tr>
 							<td>Nom du gène</td>
-							<td>--------- </td>
+							<td>{{gene_name}} </td>
 						</tr>
 						<tr>
-							<td>Autre info</td>
-							<td>--------- </td>
+							<td>Id</td>
+							<td>{{protein_id}} </td>
 						</tr>
 						<tr>
-							<td>Autre info</td>
-							<td>--------- </td>
+							<td>Longueur de la protéine</td>
+							<td>{{protein_length}} </td>
 						</tr>
 						<tr>
 							<td>Autre info</td>
@@ -261,6 +250,17 @@
 
 
 	</div>
+
+	<script>
+		var buttons = document.querySelectorAll('#dpdwn');
+		for (var i=0 ; i < buttons.length ; i++){
+				buttons[i].onclick = function(){
+					console.log("AAAAAAAAAAAAA")
+					window.location.href="/"+this.value;
+			  	};
+		}
+		
+	</script>
 
 	<script>
 		var glmolFichier = new GLmol("glmol_file", true);
