@@ -14,7 +14,6 @@ Click==7.0
 clyngor==0.3.31
 clyngor-with-clingo==5.3.post1
 colorama==0.4.3
-command-not-found==0.3
 configobj==5.0.6
 cryptography==2.8
 cupshelpers==1.0
