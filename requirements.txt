@@ -85,7 +85,6 @@ pyparsing==2.4.6
 pyPEG2==2.15.2
 pyRFC3339==1.1
 pytest==6.0.2
-python-apt==2.0.0
 python-dateutil==2.7.3
 python-debian===0.1.36ubuntu1
 python-xapp==2.0.1
