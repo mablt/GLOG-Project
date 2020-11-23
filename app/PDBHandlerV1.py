@@ -1,7 +1,7 @@
 import os
 from Bio.PDB import PDBParser
 from Bio.PDB.DSSP import DSSP
-import os, ssl
+import os, ssl, glob
 
 class PDBHandler():
 
@@ -19,6 +19,24 @@ class PDBHandler():
         self.m_finalData = None     # Data that will be use by the ProteinPlotter class
 
 
+    # def load_data(self):
+    #     """
+    #     Load all the pdb files in the folder. Create BIO.PDB.DSSP.DSSP object to stock each data's file
+    #     """
+    #     stock = []
+    #     path = './../pdb'
+    #     files = glob.glob(path+ '/**/**/*.pdb', recursive=True)
+    #     # for pdb in os.scandir(self.m_folder):
+    #     #     if(pdb.path.endswith(".pdb")):
+    #     for file in files:
+    #         # if self.m_id in file:
+    #         p = PDBParser()
+    #         structure = p.get_structure("prot", file)
+    #         model = structure[0]
+    #         dssp = DSSP(model, file)
+    #         stock.append(dssp)
+    #     return stock
+    
     def load_data(self):
         """
         Load all the pdb files in the folder. Create BIO.PDB.DSSP.DSSP object to stock each data's file

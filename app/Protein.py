@@ -1,29 +1,37 @@
 import requests
 import json
 
+from .ProteinPlotterV1 import *
+from .PDBHandlerV1 import *
 
 class Protein():
     def __init__(self, numero):
         self.m_number = numero
-        self.m_pdb = "https://swissmodel.expasy.org/repository/uniprot/%s.pdb"%numero
+        self.m_pdb = open("path/"+self.m_number+".pdb", 'r')
+        
+        requests.get("https://swissmodel.expasy.org/repository/uniprot/%s.pdb"%numero).text
         self.m_json = self.m_id = self.m_name = self.m_length = self.m_seq = None 
     
     def get_json_from_uniprot(self):
         response = requests.get("https://swissmodel.expasy.org/repository/uniprot/%s.json"%self.m_number)
-        # print(response.json.get("content-type"))
-        # print(response.json())
-        # response.json
-        print(response.text)
-        text = '{"success": "true", "status": 200, "message": "Hello"}'
 
-        # exit()
-        self.m_json = json.loads(text)
+        if 'json' in response.headers.get('Content-Type'):
+            self.m_json = response.json()
+            print(self.m_json['result']['uniprot_entries'][0]['id'])
+            
+            self.m_id = self.m_json['result']['uniprot_entries'][0]['ac']
+            self.m_name = self.m_json['result']['uniprot_entries'][0]['id']
+            self.m_length = self.m_json['result']['sequence_length']
+            self.m_seq = self.m_json['result']['sequence']
 
     def set_attributes(self):
-        self.m_id = self.m_json['result']['uniprot_entries'][0]['ac']
-        self.m_name = self.m_json['result']['uniprot_entries'][0]['id']
-        self.m_length = self.m_json['result']['sequence_length']
-        self.m_seq = self.m_json['result']['sequence']
+        pass
+        # print("DAdA")
+        # print(self.m_json)
+        # self.m_id = self.m_json['result']['uniprot_entries'][0]['ac']
+        # self.m_name = self.m_json['result']['uniprot_entries'][0]['id']
+        # self.m_length = self.m_json['result']['sequence_length']
+        # self.m_seq = self.m_json['result']['sequence']
     
     def get_pdb_file(self):
         return self.m_pdb
@@ -43,7 +51,15 @@ class Protein():
     def execute(self):
         self.get_json_from_uniprot()
         self.set_attributes()
+        # self.make_protein_plotter()
 
+
+    def make_protein_plotter(self):
+        load = PDBHandler(self.m_id, "./../pdb/")
+        data, length = load.data_creation()
+        model = ProteinPlotter(data, length)
+        model.draw_2D_protein()
+        
 
 # if __name__ == '__main__':
     # test = Protein('P12345')

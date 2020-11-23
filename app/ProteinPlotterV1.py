@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
-from HelixPlotter import *
-from SheetPlotter import *
-from PDBHandler import *
-from Protein import *
+from .HelixPlotter import *
+from .SheetPlotter import *
+from .PDBHandlerV1 import *
+from .Protein import *
 
 
 class ProteinPlotter():
@@ -43,15 +43,18 @@ class ProteinPlotter():
         plt.show()
 
 
-############################################
-####### SERA CHANGÉ AVEC :
-####### pdbDirectory : où on a les pdb sur le site
-####### index = id du clic j'imagine
-pdbDirectory = "pdb/serpent/Vipera_berus"       
-indexToAccess = 6
-############################################
+if __name__ == '__main__':
+    
 
-load = PDBHandler(indexToAccess, pdbDirectory)
-data, length = load.data_creation()
-model = ProteinPlotter(data, length)
-model.draw_2D_protein()
+    ############################################
+    ####### SERA CHANGÉ AVEC :
+    ####### pdbDirectory : où on a les pdb sur le site
+    ####### index = id du clic j'imagine
+    pdbDirectory = "pdb/serpent/Vipera_berus"       
+    indexToAccess = 6
+    ############################################
+
+    load = PDBHandler(indexToAccess, pdbDirectory)
+    data, length = load.data_creation()
+    model = ProteinPlotter(data, length)
+    model.draw_2D_protein()
