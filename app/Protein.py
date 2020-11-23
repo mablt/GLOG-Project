@@ -7,14 +7,14 @@ from .PDBHandlerV1 import *
 class Protein():
     def __init__(self, numero):
         self.m_number = numero
-        self.m_pdb = open("path/"+self.m_number+".pdb", 'r')
+        # self.m_pdb = open("path/"+self.m_number+".pdb", 'r')
         
-        requests.get("https://swissmodel.expasy.org/repository/uniprot/%s.pdb"%numero).text
+        self.m_pdb =  requests.get("https://swissmodel.expasy.org/repository/uniprot/%s.pdb"%numero).text
         self.m_json = self.m_id = self.m_name = self.m_length = self.m_seq = None 
     
     def get_json_from_uniprot(self):
         response = requests.get("https://swissmodel.expasy.org/repository/uniprot/%s.json"%self.m_number)
-
+        
         if 'json' in response.headers.get('Content-Type'):
             self.m_json = response.json()
             print(self.m_json['result']['uniprot_entries'][0]['id'])
@@ -55,7 +55,7 @@ class Protein():
 
 
     def make_protein_plotter(self):
-        load = PDBHandler(self.m_id, "./../pdb/")
+        load = PDBHandler(self.m_id, ".")
         data, length = load.data_creation()
         model = ProteinPlotter(data, length)
         model.draw_2D_protein()
