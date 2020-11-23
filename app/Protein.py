@@ -51,11 +51,11 @@ class Protein():
     def execute(self):
         self.get_json_from_uniprot()
         self.set_attributes()
-        # self.make_protein_plotter()
+        self.make_protein_plotter()
 
 
     def make_protein_plotter(self):
-        load = PDBHandler(self.m_id, ".")
+        load = PDBHandler(self.m_id, "./app/pdb/")
         data, length = load.data_creation()
         model = ProteinPlotter(data, length)
         model.draw_2D_protein()

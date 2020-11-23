@@ -1,7 +1,8 @@
 import os
 from Bio.PDB import PDBParser
 from Bio.PDB.DSSP import DSSP
-import os, ssl, glob
+import os, ssl
+
 
 class PDBHandler():
 
@@ -19,36 +20,18 @@ class PDBHandler():
         self.m_finalData = None     # Data that will be use by the ProteinPlotter class
 
 
-    # def load_data(self):
-    #     """
-    #     Load all the pdb files in the folder. Create BIO.PDB.DSSP.DSSP object to stock each data's file
-    #     """
-    #     stock = []
-    #     path = './../pdb'
-    #     files = glob.glob(path+ '/**/**/*.pdb', recursive=True)
-    #     # for pdb in os.scandir(self.m_folder):
-    #     #     if(pdb.path.endswith(".pdb")):
-    #     for file in files:
-    #         # if self.m_id in file:
-    #         p = PDBParser()
-    #         structure = p.get_structure("prot", file)
-    #         model = structure[0]
-    #         dssp = DSSP(model, file)
-    #         stock.append(dssp)
-    #     return stock
-    
     def load_data(self):
         """
         Load all the pdb files in the folder. Create BIO.PDB.DSSP.DSSP object to stock each data's file
         """
         stock = []
-        for pdb in os.scandir(self.m_folder):
-            if(pdb.path.endswith(".pdb")):
-                p = PDBParser()
-                structure = p.get_structure("prot", pdb)
-                model = structure[0]
-                dssp = DSSP(model, pdb)
-                stock.append(dssp)
+        pdb = self.m_folder + self.m_id + ".pdb"
+        print(os.listdir(self.m_folder))
+        p = PDBParser()
+        structure = p.get_structure("prot", pdb)
+        model = structure[0]
+        dssp = DSSP(model, pdb)
+        stock.append(dssp)
         return stock
 
 
@@ -57,12 +40,13 @@ class PDBHandler():
         Retrieve the DSSP code letters of each amino acid of the protein
         """
         data = self.load_data()
+        print(data)
         i=0
         structure = []
         while(True):
             try:
-                a_key = list(data[self.m_id].keys())[i]
-                structure.append(data[self.m_id][a_key][2])
+                a_key = list(data[0].keys())[i]
+                structure.append(data[0][a_key][2])
                 i = i+1
             except IndexError:
                 break
