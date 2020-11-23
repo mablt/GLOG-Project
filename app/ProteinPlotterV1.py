@@ -40,7 +40,8 @@ class ProteinPlotter():
             feature_plotters=[HelixPlotter(), SheetPlotter()]
         )
         fig.tight_layout()
-        plt.show()
+        # plt.show()
+        return fig
 
 
 
