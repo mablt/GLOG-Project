@@ -1,6 +1,7 @@
 from app import app
 from flask import render_template, request
-from .models import  getResponse
+from .models import getResponse
+from .Protein import *
 
 
 
@@ -16,10 +17,19 @@ def index():
 def get_pdb(id):
    # if request.method == "POST":
       # protein = print_pdb(request.form["nm"])
-   data = getResponse(id)
-   return render_template("index.html", protein = data["pdb"], protein_id=data["protein_id"], 
-                          protein_name=data["protein_name"], organism=data["organism"], 
-                          protein_length=data["length"], gene_name=data["gene"])
+      
+   protein = Protein(id)
+   protein.execute()
+   pdb =  protein.get_pdb_file()
+   protein_name = protein.get_name()
+   organism = "..."
+   protein_length = protein.get_length()
+   gene_name = "..."
+   
+   # data = getResponse(id)
+   return render_template("index.html", protein = pdb, protein_id= id, 
+                          protein_name=protein_name, organism=organism, 
+                          protein_length=protein_length, gene_name=gene_name)
  
 
 ########################### LIKE SERVER1 BEFORE ###########################
