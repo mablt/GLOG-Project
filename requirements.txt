@@ -1,5 +1,4 @@
-apturl==0.5.2
-arandr==0.1.10
+
 Arpeggio==1.9.2
 astroid==2.4.2
 atomicwrites==1.1.5
