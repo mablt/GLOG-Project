@@ -45,18 +45,3 @@ class ProteinPlotter():
 
 
 
-if __name__ == '__main__':
-    
-
-    ############################################
-    ####### SERA CHANGÉ AVEC :
-    ####### pdbDirectory : où on a les pdb sur le site
-    ####### index = id du clic j'imagine
-    pdbDirectory = "pdb/serpent/Vipera_berus/"       
-    name = "P0C6A6"
-    ############################################
-
-    load = PDBHandler(name, pdbDirectory)
-    data, length = load.data_creation()
-    model = ProteinPlotter(data, length)
-    model.draw_2D_protein()
