@@ -31,7 +31,7 @@ textarea{
 .column1{
 	margin : 0;
   	float:left;
-  	width : 30%;
+  	width : 20%;
 	background-color: white;
 	border : solid #3D3D3D;
 	border-top: none;
@@ -39,7 +39,7 @@ textarea{
 .column2{
 	margin : 0;
 	padding : 0;
-	width:40%;
+	width:50%;
 	border-top: none;
 	background-color: black;
 }
@@ -127,7 +127,7 @@ textarea{
 #dpdwn{
 	background-color: white;
 	color : #3D3D3D;
-	width: 200px;
+	width: 150px;
 	border: none;
 	border-bottom: dotted #3D3D3D;
 	font-family:  Verdana, Geneva, sans-serif;
@@ -144,3 +144,4 @@ td{
 	padding: 6px;
 	border : thin dotted #3D3D3D;
 }
+
