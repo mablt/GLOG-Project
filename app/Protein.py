@@ -1,8 +1,8 @@
 import requests
 import json
 
-from .ProteinPlotterV1 import *
-from .PDBHandlerV1 import *
+from .ProteinPlotter import *
+from .PDBHandler import *
 
 class Protein():
     def __init__(self, numero):
@@ -62,6 +62,6 @@ class Protein():
         return fig
         
 
-# if __name__ == '__main__':
-    # test = Protein('P12345')
-    # test.execute()
+if __name__ == '__main__':
+    test = Protein('P12345')
+    test.execute()
