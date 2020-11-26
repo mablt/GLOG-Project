@@ -19,10 +19,10 @@ def get_pdb(id):
       # protein = print_pdb(request.form["nm"])
       
    protein = Protein(id)
-   protein.execute()
+   # protein.execute() # Tout est fait dans le constructeur maintenant
    pdb =  protein.get_pdb_file()
    protein_name = protein.get_name()
-   organism = "..."
+   organism = protein.get_species()
    protein_length = protein.get_length()
    gene_name = "..."
    fig = protein.make_protein_plotter()
