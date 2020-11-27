@@ -23,7 +23,7 @@ def get_pdb(id):  # A renommer
    protein_name = protein.get_name()
    organism = protein.get_species()
    protein_length = protein.get_length()
-   gene_name = "..."
+   gene_name = protein.get_gene()
    fig = protein.get_2D_prediction_figure()
    # Convert fig object to html
    img = io.BytesIO()
