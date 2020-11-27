@@ -1,40 +1,41 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Protein.py: Protein class of the GLOG Project.
+
+DESCRITPION #TODO
+"""
+
+__author__ = "ALVES Marine, BOLTEAU Mathieu, CARRIAT Mélanie, CORNIER Alexandre, DRANCÉ Martin, JELIN Rémy and NEUHAUS Abdelghani"
+__copyright__ = "Copyright ?? December 2020" #TODO
+__version__ = "1.0.0" 
+
+# Libraries imports
 import requests
 import json
 
-from .ProteinPlotter import *
-from .PDBHandler import *
+# Local imports
+from .ProteinPlotter import ProteinPlotter
+from .PDBHandler import PDBHandler
 
 class Protein():
-    def __init__(self, numero):
-        self.m_id = numero
-        # self.m_number = numero
-        # print(self.m_number)
-        
-        # Get JSON file from request
-        response = requests.get("https://swissmodel.expasy.org/repository/uniprot/%s.json"%self.m_id)
-        if 'json' in response.headers.get('Content-Type'):
-            self.m_json = response.json()
+    def __init__(self, id):
+        self.m_id = id
+        self.import_json_data_from_uniprot()
+        self.import_pdb_file_content()
+        self.import_fasta_data_from_uniprot()
+        self.make_2D_prediction()
             
-            # Add data from the JSON to the Protein Object
-            
-            # self.m_id = self.m_json['result']['uniprot_entries'][0]['ac']
-            self.m_name = self.m_json['result']['uniprot_entries'][0]['id']
-            self.m_length = self.m_json['result']['sequence_length']
-            self.m_seq = self.m_json['result']['sequence']
-        
+    def import_pdb_file_content(self):
+        """
+        Import the data (as string) from the pdb file of the protein and put it to 'pdb_content' variable
+        """
         with open("./app/pdb/"+self.m_id+".pdb", 'r') as pdb_file_object:
-            self.m_pdb = pdb_file_object.read()
-            
-        self.get_fasta_from_uniprot()
-           
-            
-        # Request vers swissModel (plus utilisé car utilisation des ifhicers en local)
-        # self.m_pdb =  requests.get("https://swissmodel.expasy.org/repository/uniprot/%s.pdb"%numero).text
+            self.pdb_content = pdb_file_object.read()
         
-    def get_fasta_from_uniprot(self):
-        #code = "O48311"
+    def import_fasta_data_from_uniprot(self):
         url = 'https://swissmodel.expasy.org/repository/uniprot/%s.fasta'%self.m_id
-        # url = 'https://swissmodel.expasy.org/repository/uniprot/%s.fasta'%self.m_number
         r = requests.get(url)
         texte = r.text
 
@@ -64,16 +65,27 @@ class Protein():
         self.m_protein = texte[start:end]     
     
  
-    def make_protein_plotter(self):
+    def make_2D_prediction(self):
+        """
+        Make the 2D prediction and put the matplotlib figure object in 'prediction_figure' variable
+        """
         load = PDBHandler(self.m_id, "./app/pdb/")
         data, length = load.data_creation()
         model = ProteinPlotter(data, length)
-        fig = model.draw_2D_protein()
-        return fig
-    
+        self.prediction_figure = model.draw_2D_protein()
+        
+    def import_json_data_from_uniprot(self):
+        response = requests.get("https://swissmodel.expasy.org/repository/uniprot/%s.json"%self.m_id)
+        if 'json' in response.headers.get('Content-Type'):
+            self.m_json = response.json()
+            # Add data from the JSON to the Protein Object
+            self.m_name = self.m_json['result']['uniprot_entries'][0]['id']
+            self.m_length = self.m_json['result']['sequence_length']
+            self.m_seq = self.m_json['result']['sequence']
+
     
     def get_pdb_file(self):
-        return self.m_pdb
+        return self.pdb_content
 
     def get_id(self):
         return self.m_id
@@ -90,37 +102,7 @@ class Protein():
     def get_species(self):
         return self.m_species
 
+    def get_2D_prediction_figure(self):
+        return self.prediction_figure
    
-    # def get_json_from_uniprot(self):
-    #     response = requests.get("https://swissmodel.expasy.org/repository/uniprot/%s.json"%self.m_number)
-        
-    #     if 'json' in response.headers.get('Content-Type'):
-    #         self.m_json = response.json()
-    #         print(self.m_json['result']['uniprot_entries'][0]['id'])
-            
-    #         self.m_id = self.m_json['result']['uniprot_entries'][0]['ac']
-    #         self.m_name = self.m_json['result']['uniprot_entries'][0]['id']
-    #         self.m_length = self.m_json['result']['sequence_length']
-    #         self.m_seq = self.m_json['result']['sequence']
-
-    # def set_attributes(self):
-        # pass
-        # print("DAdA")
-        # print(self.m_json)
-        # self.m_id = self.m_json['result']['uniprot_entries'][0]['ac']
-        # self.m_name = self.m_json['result']['uniprot_entries'][0]['id']
-        # self.m_length = self.m_json['result']['sequence_length']
-        # self.m_seq = self.m_json['result']['sequence']
     
-        
-        
-        
-    # def execute(self):
-    #     self.get_json_from_uniprot()
-    #     self.set_attributes()
-    #     # self.make_protein_plotter()
-    
-
-if __name__ == '__main__':
-    test = Protein('P12345')
-    # test.execute()

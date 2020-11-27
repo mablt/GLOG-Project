@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 from .HelixPlotter import *
 from .SheetPlotter import SheetPlotter
 from .PDBHandler import PDBHandler
-# from .Protein import Protein
 
 
 class ProteinPlotter():

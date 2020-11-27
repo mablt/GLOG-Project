@@ -1,11 +1,12 @@
 from app import app
 from flask import render_template, request
-from .models import getResponse
-from .Protein import *
+from .ProteinRepository import ProteinRepository
 import io, base64
 
 
 ########################### LIKE SERVER2 BEFORE ###########################
+
+PROTEIN_REPOSITORY = ProteinRepository()
 
 # Page initiale
 @app.route('/', methods = ['POST', 'GET'])
@@ -14,18 +15,16 @@ def index():
 
 # Affichage d'une protéine
 @app.route('/<id>', methods = ['POST', 'GET'])
-def get_pdb(id):
-   # if request.method == "POST":
-      # protein = print_pdb(request.form["nm"])
-      
-   protein = Protein(id)
-   # protein.execute() # Tout est fait dans le constructeur maintenant
+def get_pdb(id):  # A renommer
+   protein = PROTEIN_REPOSITORY.get_protein_by_id(id)
+   
+   # Lines 24 to 37 : TO MODIFY !      # TODO
    pdb =  protein.get_pdb_file()
    protein_name = protein.get_name()
    organism = protein.get_species()
    protein_length = protein.get_length()
    gene_name = "..."
-   fig = protein.make_protein_plotter()
+   fig = protein.get_2D_prediction_figure()
    # Convert fig object to html
    img = io.BytesIO()
    fig.savefig(img, format='png',
