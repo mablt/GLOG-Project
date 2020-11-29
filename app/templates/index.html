@@ -184,7 +184,7 @@
 					</table>
 				</div>
 				<div class="actions">
-					<button type="button" id="actions-button" name="" value=""> Action1</button>
+					<button type="button" id="actions-button" name="" value="blast"> Blast</button>
 					<button type="button" id="actions-button" name="" value=""> Action2</button>
 					<button type="button" id="actions-button" name="" value=""> Action3</button>
 					<button type="button" id="actions-button" name="" value=""> Action4</button>
@@ -193,15 +193,12 @@
 
 				</div>
 
-				
+				<div id="results-actions">
+					
+				</div>
 
 
 			</div>
-
-
-
-
-
 
 		</div>
 		<div class = "row" >
@@ -218,17 +215,40 @@
 
 	<!-- Button onclick event management -->
 	<script>
+		
+		var ID_PROTEIN = '{{ protein_id }}';
+
 		var buttons = document.querySelectorAll('#dpdwn');
 		for (var i=0 ; i < buttons.length ; i++){
 				buttons[i].onclick = function(){
-					console.log("AAAAAAAAAAAAA")
 					window.location.href="/"+this.value;
+					
 			  	};
 		}
 		
+	
+		var actionsButton = document.querySelectorAll("#actions-button");
+		for (var i=0 ; i < actionsButton.length ; i++){
+			actionsButton[i].onclick = function(){
+				//getBlastFigure();
+				var element = document.getElementById("results-actions");
+				if(this.value == "blast"){
+					$("#results-actions").html('<p>Le blast est en cours ...</p>')
+				}
+				$.post('/'+ID_PROTEIN+'/blast').done(function(response){
+					var link1 = response["link1"];
+					var link2 = response["link2"];
+					var link3 = response["link3"];
+					var data = "link1 : "+link1+"<br>"+"link2 : "+link2+"<br>"+"link3 : "+link3+"<br>"
+					$("#results-actions").html(data);
+				}).fail( function(){
+					$("#results-actions").html("<p>Le blast n'a pas fonctionné !</p>")
+				});
+			  };
+			}
 	</script>
 
-	<!-- 3D visualisation with GLmol integration  -->
+	<!-- 3D visualisation with GLmol integration -->
 	<script>
 		var glmolFichier = new GLmol("glmol_file", true);
 		glmolFichier.loadMolecule();

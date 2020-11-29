@@ -25,7 +25,8 @@ class Protein():
         self.m_id = id
         self.import_pdb_file_content()
         self.make_2D_prediction()
-        self.gene = None
+        self.gene = self.blast_figure = self.ramachandran_figure = None
+        
         self.import_json_data_from_uniprot()
         self.import_fasta_data_from_uniprot()
         
@@ -100,7 +101,7 @@ class Protein():
             
     
     
-    def get_pdb_file(self):
+    def get_pdb(self):
         return self.pdb_content
 
     def get_id(self):
@@ -124,5 +125,9 @@ class Protein():
     def get_2D_prediction_figure(self):
         return self.prediction_figure
    
-
+    def get_blast_figure(self):
+        return self.blast_figure
+    
+    def get_ramachandran_figure(self):
+        return self.ramachandran_figure
     

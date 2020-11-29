@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Protein.py: Protein class of the GLOG Project.
+Protein.py: ProteinRepository class of the GLOG Project.
 
 DESCRITPION #TODO
 """
@@ -30,7 +30,7 @@ class ProteinRepository():
             self.proteins[id] = protein
             
     def get_2D_prediction(self, id):
-        """Get tthe 2D prediction figure of the protein with the ID 'id'
+        """Get the 2D prediction figure of the protein with the ID 'id'
 
         Args:
             id (string): ID of the protein
@@ -44,13 +44,6 @@ class ProteinRepository():
             protein.make_2D_prediction()
         return protein.get_2D_prediction_figure()
     
-    def make_blast(self, id):
-        # protein = self.proteins.get(id)
-        # if protein.get_blast() is None:
-        #     protein.make_blast()
-        # return protein.get_blast()
-        
-        pass
     
     def is_absent(self,id):
         """Check if the protein with the ID 'id' is absent of the repository
@@ -78,3 +71,31 @@ class ProteinRepository():
         if self.is_absent(id):
             self.add_protein(id)
         return self.proteins.get(id)
+    
+    def get_protein_informations_by_id(self, id):
+        protein = self.get_protein_by_id(id)
+        data = {
+            "name": protein.get_name(),
+            "species": protein.get_species(),
+            "length": protein.get_length(),
+            "gene": protein.get_gene(),
+            "pdb": protein.get_pdb(),
+            "2D_prediction": protein.get_2D_prediction_figure()
+        }
+        return data
+    
+    def make_blast(self, id):
+        # protein = self.proteins.get(id)
+        # if protein.get_blast_figure() is None:
+        #     protein.make_blast()
+        # return protein.get_blast()
+         
+        # TODO
+        
+        pass
+    
+    def make_ramachandran(self, id):
+        
+        # TODO
+        
+        pass
