@@ -1,0 +1,147 @@
+
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+}
+h1{
+	align-content: center;
+}
+body{
+	margin: 0;
+}
+textarea{
+	margin:0;
+	padding:0;
+}
+.container{
+	margin : 0;
+}
+
+#visualisation-row{
+	height : 700px;
+}
+
+#header-row{
+	height: 100px;
+	background-color: white;
+	border-bottom : solid #3D3D3D;
+}
+.column1{
+	margin : 0;
+  	float:left;
+  	width : 20%;
+	background-color: white;
+	border : solid #3D3D3D;
+	border-top: none;
+}
+.column2{
+	margin : 0;
+	padding : 0;
+	width:50%;
+	border-top: none;
+	background-color: black;
+}
+.column3{
+	margin : 0;
+  	background-color: white;
+ 	width : 30%;
+	border : solid #3D3D3D;
+	border-top: none;
+}
+.main-nav{
+	background-color: white;
+}
+.main-nav a{
+	letter-spacing: .2em;
+	color: #3D3D3D;
+	display: block;
+	padding: 10px 10px 10px 20px;
+	margin-right: 20px;
+	border-bottom: dotted #3D3D3D;
+}
+
+.main-nav .sub-arrow:after{
+	content:'\203A';	
+	float:right;
+	transform: rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+}
+
+.main-nav li:hover .sub-arrow:after{
+	content:'\2039';
+}
+#nav-title{
+	font-weight: bold;
+}
+.spieces-nav-ul{
+	padding: 0;
+	font-style: italic;
+}
+
+	
+.spieces-nav-ul ul {
+	display: none;
+	font-style: normal;
+}
+
+.spieces-nav-ul li:hover ul{
+	display: block;
+}
+
+#glmol_file{
+	height: 400px;
+	margin: 0;
+	padding : 0;
+
+}
+#glmol_file_src{
+	margin:0;
+	padding: 0;
+}
+
+.info-table{
+ 	border-collapse: collapse;
+	background-color: white;
+	width:100%;
+}
+.actions{
+	border-top: solid #3D3D3D;
+}
+
+#actions-button{
+	width: 100%;
+	border: none;
+	border-bottom: solid #3D3D3D;
+	background-color: white;
+	font-family:  Verdana, Geneva, sans-serif;
+}
+
+#actions-button:hover{
+	background-color: #929292;
+	color : white;
+}
+
+#dpdwn{
+	background-color: white;
+	color : #3D3D3D;
+	width: 150px;
+	border: none;
+	border-bottom: dotted #3D3D3D;
+	font-family:  Verdana, Geneva, sans-serif;
+
+
+
+}
+#dpdwn:hover{
+	background-color: #929292;
+	color : white;
+}
+
+td{
+	padding: 6px;
+	border : thin dotted #3D3D3D;
+}
+
