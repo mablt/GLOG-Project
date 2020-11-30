@@ -25,12 +25,8 @@ class Protein():
         self.m_id = id
         self.import_pdb_file_content()
         self.make_2D_prediction()
-        self.gene = self.blast_figure = self.ramachandran_figure = None
-        
-        self.import_json_data_from_uniprot()
-        self.import_fasta_data_from_uniprot()
-        
-        # self.import_xml_data_from_uniprot()
+        self.gene = self.blast_figure = self.ramachandran_figure = None    
+        self.import_xml_data_from_uniprot()
             
     def import_pdb_file_content(self):
         """
@@ -47,47 +43,7 @@ class Protein():
         data, length = load.data_creation()
         model = ProteinPlotter(data, length)
         self.prediction_figure = model.draw_2D_protein()
-        
-    def import_json_data_from_uniprot(self):
-        response = requests.get("https://swissmodel.expasy.org/repository/uniprot/%s.json"%self.m_id)
-        if 'json' in response.headers.get('Content-Type'):
-            self.m_json = response.json()
-            # Add data from the JSON to the Protein Object
-            self.m_name = self.m_json['result']['uniprot_entries'][0]['id']
-            self.m_length = self.m_json['result']['sequence_length']
-            self.m_seq = self.m_json['result']['sequence']
-
-        
-    def import_fasta_data_from_uniprot(self):
-        url = 'https://swissmodel.expasy.org/repository/uniprot/%s.fasta'%self.m_id
-        r = requests.get(url)
-        texte = r.text
-
-        # Get the species name (between 0S)
-        start = texte.find("OS") + len("OS")
-        end = texte.find("\n")
-        substring = texte[start:end]
-
-        espece = []
-        for i in range(len(substring)):
-            espece.append(substring[i])
-        self.m_species = [''.join(espece)]
-        self.m_species[0] = self.m_species[0] + " ."
-
-        if "GN" in self.m_species[0]:
-            start = substring.find("=") + len("=")
-            end = substring.find("GN")
-            self.m_species = substring[start:end]
-        else:
-            start = substring.find("=") + len("=")
-            end = substring.find(" .")
-            self.m_species = substring[start:end]
             
-        # Get the protein name (between a space and the OS=)
-        start = texte.find(" ") + len(" ")
-        end = texte.find("OS")
-        self.m_protein = texte[start:end]     
-    
     def import_xml_data_from_uniprot(self):
         path = "{http://uniprot.org/uniprot}"
         response = requests.get("https://www.uniprot.org/uniprot/{}.xml".format(self.m_id))
