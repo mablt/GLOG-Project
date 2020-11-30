@@ -49,7 +49,11 @@ class Protein():
         response = requests.get("https://www.uniprot.org/uniprot/{}.xml".format(self.m_id))
         self.xml = ETree.fromstring(response.content)
         self.m_name = self.xml.find("{}entry/{}protein/{}recommendedName/{}fullName".format(path, path,path,path)).text
-        self.gene = self.xml.find("{}entry/{}gene/{}name".format(path, path,path)).text
+        self.gene = self.xml.find("{}entry/{}gene/{}name".format(path, path, path))
+        if self.gene is None :
+            self.gene = "N.A."
+        else:
+            self.gene = self.gene.text           
         self.m_species = self.xml.find("{}entry/{}organism/{}name".format(path, path,path)).text
         self.m_seq = self.xml.find("{}entry/{}sequence".format(path, path)).text
         self.m_length = self.xml.find("{}entry/{}sequence".format(path, path)).attrib['length']
