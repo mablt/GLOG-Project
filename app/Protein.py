@@ -15,6 +15,8 @@ __version__ = "1.0.0"
 import requests
 import json
 from xml.etree import ElementTree as ETree
+from RamachanDraw import phi_psi, plot
+import tempfile
 
 # Local imports
 from .ProteinPlotter import ProteinPlotter
@@ -27,6 +29,7 @@ class Protein():
         self.make_2D_prediction()
         self.gene = self.blast_figure = self.ramachandran_figure = None    
         self.import_xml_data_from_uniprot()
+        self.make_ramachandran()
             
     def import_pdb_file_content(self):
         """
@@ -59,7 +62,11 @@ class Protein():
         self.m_length = self.xml.find("{}entry/{}sequence".format(path, path)).attrib['length']
 
             
-    
+    def make_ramachandran(self):
+        path = "./app/pdb/"+self.m_id+".pdb"
+        data = phi_psi(path) #ramachadran data
+        self.ramachandran_figure = tempfile.TemporaryFile()
+        plot(path, out=self.ramachandran_figure) 
     
     def get_pdb(self):
         return self.pdb_content

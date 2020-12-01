@@ -185,7 +185,7 @@
 				</div>
 				<div class="actions">
 					<button type="button" id="actions-button" name="" value="blast"> Blast</button>
-					<button type="button" id="actions-button" name="" value=""> Action2</button>
+					<button type="button" id="actions-button" name="" value="ramachandran"> Ramachandran</button>
 					<button type="button" id="actions-button" name="" value=""> Action3</button>
 					<button type="button" id="actions-button" name="" value=""> Action4</button>
 					<button type="button" id="actions-button" name="" value=""> Action5</button>
@@ -194,7 +194,7 @@
 				</div>
 
 				<div id="results-actions">
-					
+					<img src="data:image/png;base64,{{ramachandran}}">
 				</div>
 
 
@@ -230,20 +230,29 @@
 		var actionsButton = document.querySelectorAll("#actions-button");
 		for (var i=0 ; i < actionsButton.length ; i++){
 			actionsButton[i].onclick = function(){
-				//getBlastFigure();
-				var element = document.getElementById("results-actions");
+				$("#results-actions").html("");
 				if(this.value == "blast"){
 					$("#results-actions").html('<p>Le blast est en cours ...</p>')
+					$.post('/'+ID_PROTEIN+'/blast').done(function(response){
+						var link1 = response["link1"];
+						var link2 = response["link2"];
+						var link3 = response["link3"];
+						var data = "link1 : "+link1+"<br>"+"link2 : "+link2+"<br>"+"link3 : "+link3+"<br>"
+						$("#results-actions").html(data);
+					}).fail( function(){
+						$("#results-actions").html("<p>Le blast n'a pas fonctionné !</p>")
+					});
 				}
-				$.post('/'+ID_PROTEIN+'/blast').done(function(response){
-					var link1 = response["link1"];
-					var link2 = response["link2"];
-					var link3 = response["link3"];
-					var data = "link1 : "+link1+"<br>"+"link2 : "+link2+"<br>"+"link3 : "+link3+"<br>"
-					$("#results-actions").html(data);
-				}).fail( function(){
-					$("#results-actions").html("<p>Le blast n'a pas fonctionné !</p>")
-				});
+				else if(this.value == "ramachandran"){
+					$("#results-actions").html('<p>Le ramachandran est en cours ...</p>')
+					$.post('/'+ID_PROTEIN+'/ramachandran').done(function(response){
+						var data = "<img src='data:image/png;base64,"+response+"''>"
+						$("#results-actions").html(data);
+					}).fail( function(){
+						$("#results-actions").html("<p>Le ramachandran n'a pas fonctionné !</p>")
+					});
+				}
+				
 			  };
 			}
 	</script>

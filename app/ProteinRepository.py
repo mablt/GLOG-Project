@@ -80,7 +80,8 @@ class ProteinRepository():
             "length": protein.get_length(),
             "gene": protein.get_gene(),
             "pdb": protein.get_pdb(),
-            "2D_prediction": protein.get_2D_prediction_figure()
+            "2D_prediction": protein.get_2D_prediction_figure(),
+            "ramachandran": protein.get_ramachandran_figure()
         }
         return data
     
@@ -95,7 +96,7 @@ class ProteinRepository():
         pass
     
     def make_ramachandran(self, id):
-        
-        # TODO
-        
-        pass
+        protein = self.proteins.get(id)
+        if protein.get_ramachandran_figure() is None:
+            protein.make_ramachandran()
+        return protein.get_ramachandran_figure()
