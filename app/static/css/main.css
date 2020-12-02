@@ -15,8 +15,10 @@ textarea{
 	margin:0;
 	padding:0;
 }
-.container{
+.container-fluid{
 	margin : 0;
+	padding: 0;
+	
 }
 
 #visualisation-row{
@@ -24,7 +26,7 @@ textarea{
 }
 
 #header-row{
-	height: 100px;
+	height: 75px;
 	background-color: white;
 	border-bottom : solid #3D3D3D;
 }
@@ -41,7 +43,6 @@ textarea{
 	padding : 0;
 	width:50%;
 	border-top: none;
-	background-color: black;
 }
 .column3{
 	margin : 0;
@@ -92,11 +93,12 @@ textarea{
 }
 
 #glmol_file{
-	height: 400px;
+	height: 50%;
 	margin: 0;
 	padding : 0;
-
+	background-color: black;
 }
+
 #glmol_file_src{
 	margin:0;
 	padding: 0;
@@ -145,3 +147,32 @@ td{
 	border : thin dotted #3D3D3D;
 }
 
+#prediction{
+	height: 50%;
+}
+
+#prediction-3d{ 
+	position: absolute; 
+	top: 0; 
+	left: 0 ;
+}
+
+html, body { padding: 0; margin: 0; width: 100%; height: 100%; }
+body { overflow: hidden; }
+
+
+#prediction-figure{
+	width: 90%;
+	display: table-cell;
+}
+
+#prediction-legend{
+	width: 10%;
+	background-color: yellow;
+	display: table-cell;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}

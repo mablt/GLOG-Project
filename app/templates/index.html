@@ -147,13 +147,24 @@
 			</div>
 			<div class="column2">
 				<div id="glmol_file">
-					<canvas></canvas>
-					<textarea id="glmol_file_src" style="display: none;">
-						{{ protein }}
-					</textarea>
-
+					<canvas id="prediction-3d"></canvas>
 				</div>
+				<textarea id="glmol_file_src" style="display: none;">
+					{{ protein }}
+				</textarea>
+
+				<div id="prediction">
+					<div id="prediction-figure">
+						<img src="data:image/png;base64,{{figure_2D}}">
+					</div>
+					<div id="prediction-legend">
+						LEGEND TO INSERT
+					</div>
+				</div>
+				
 			</div>
+
+
 			<div class="column3" id="info-column">
 				<div class="info-table">
 					<table>
@@ -177,19 +188,11 @@
 							<td>Longueur de la protéine</td>
 							<td>{{protein_length}} </td>
 						</tr>
-						<tr>
-							<td>Autre info</td>
-							<td>--------- </td>
-						</tr>
 					</table>
 				</div>
 				<div class="actions">
 					<button type="button" id="actions-button" name="" value="blast"> Blast</button>
 					<button type="button" id="actions-button" name="" value="ramachandran"> Ramachandran</button>
-					<button type="button" id="actions-button" name="" value=""> Action3</button>
-					<button type="button" id="actions-button" name="" value=""> Action4</button>
-					<button type="button" id="actions-button" name="" value=""> Action5</button>
-
 
 				</div>
 
@@ -201,11 +204,11 @@
 			</div>
 
 		</div>
-		<div class = "row" >
+		<!-- <div class = "row" >
 			<div id="2d">
 				<img src="data:image/png;base64,{{figure_2D}}">
 			</div>
-		</div>
+		</div> -->
 
 
 
