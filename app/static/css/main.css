@@ -1,4 +1,6 @@
 
+
+/* ------------------  GENERAL ------------------ */
 a{
 	text-decoration: none;
 }
@@ -15,6 +17,7 @@ textarea{
 	margin:0;
 	padding:0;
 }
+
 .container-fluid{
 	margin : 0;
 	padding: 0;
@@ -25,11 +28,16 @@ textarea{
 	height : 700px;
 }
 
+/*  ------------------ HEADER ------------------ */
+
 #header-row{
 	height: 75px;
 	background-color: white;
 	border-bottom : solid #3D3D3D;
 }
+
+/*  ------------------ FIRST COLUMN  ------------------ */
+
 .column1{
 	margin : 0;
   	float:left;
@@ -38,19 +46,28 @@ textarea{
 	border : solid #3D3D3D;
 	border-top: none;
 }
-.column2{
-	margin : 0;
-	padding : 0;
-	width:50%;
-	border-top: none;
+
+#nav-title{
+	font-weight: bold;
 }
-.column3{
-	margin : 0;
-  	background-color: white;
- 	width : 30%;
-	border : solid #3D3D3D;
-	border-top: none;
+
+/* Dropdown */
+
+#dpdwn{
+	background-color: white;
+	color : #3D3D3D;
+	width: 150px;
+	border: none;
+	border-bottom: dotted #3D3D3D;
+	font-family:  Verdana, Geneva, sans-serif;
+
 }
+#dpdwn:hover{
+	background-color: #929292;
+	color : white;
+}
+
+
 .main-nav{
 	background-color: white;
 }
@@ -63,6 +80,21 @@ textarea{
 	border-bottom: dotted #3D3D3D;
 }
 
+.spieces-nav-ul{
+	padding: 0;
+	font-style: italic;
+}
+	
+.spieces-nav-ul ul {
+	display: none;
+	font-style: normal;
+}
+
+.spieces-nav-ul li:hover ul{
+	display: block;
+}
+
+/* Arrows */
 .main-nav .sub-arrow:after{
 	content:'\203A';	
 	float:right;
@@ -74,23 +106,18 @@ textarea{
 .main-nav li:hover .sub-arrow:after{
 	content:'\2039';
 }
-#nav-title{
-	font-weight: bold;
-}
-.spieces-nav-ul{
-	padding: 0;
-	font-style: italic;
+
+
+/*  ------------------ SECOND COLUMN  ------------------ */
+
+.column2{
+	margin : 0;
+	padding : 0;
+	width:50%;
+	border-top: none;
 }
 
-	
-.spieces-nav-ul ul {
-	display: none;
-	font-style: normal;
-}
-
-.spieces-nav-ul li:hover ul{
-	display: block;
-}
+/* 3D visualisation */
 
 #glmol_file{
 	height: 50%;
@@ -104,11 +131,51 @@ textarea{
 	padding: 0;
 }
 
+/* 2D prediction */
+
+#prediction{
+	height: 50%;
+}
+
+#prediction-3d{ 
+	position: absolute; 
+}
+
+
+#prediction-figure{
+	width: 90%;
+	display: table-cell;
+	border-bottom: solid #3D3D3D;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/*  ------------------ THIRD COLUMN ------------------ */
+.column3{
+	margin : 0;
+  	background-color: white;
+ 	width : 30%;
+	border : solid #3D3D3D;
+	border-top: none;
+}
+
+
+/* Table  */
 .info-table{
  	border-collapse: collapse;
 	background-color: white;
 	width:100%;
+
 }
+td{
+	padding: 6px;
+	border : thin dotted #3D3D3D;
+}
+
+/* Actions buttons */
 .actions{
 	border-top: solid #3D3D3D;
 }
@@ -126,49 +193,6 @@ textarea{
 	color : white;
 }
 
-#dpdwn{
-	background-color: white;
-	color : #3D3D3D;
-	width: 150px;
-	border: none;
-	border-bottom: dotted #3D3D3D;
-	font-family:  Verdana, Geneva, sans-serif;
 
 
 
-}
-#dpdwn:hover{
-	background-color: #929292;
-	color : white;
-}
-
-td{
-	padding: 6px;
-	border : thin dotted #3D3D3D;
-}
-
-#prediction{
-	height: 50%;
-}
-
-#prediction-3d{ 
-	position: absolute; 
-}
-
-
-#prediction-figure{
-	width: 90%;
-	display: table-cell;
-	border-bottom: solid #3D3D3D;
-}
-
-#prediction-legend{
-	width: 10%;
-	background-color: yellow;
-	display: table-cell;
-}
-
-img {
-    max-width: 100%;
-    max-height: 100%;
-}
