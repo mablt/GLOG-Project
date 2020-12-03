@@ -159,6 +159,7 @@ td{
 #prediction-figure{
 	width: 90%;
 	display: table-cell;
+	border-bottom: solid #3D3D3D;
 }
 
 #prediction-legend{
