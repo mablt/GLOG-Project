@@ -119,14 +119,14 @@ textarea{
 
 /* 3D visualisation */
 
-#glmol_file{
+#prediction-3d-div{
 	height: 50%;
 	margin: 0;
 	padding : 0;
 	background-color: black;
 }
 
-#glmol_file_src{
+#prediction-3d-div_src{
 	margin:0;
 	padding: 0;
 }
@@ -194,5 +194,7 @@ td{
 }
 
 
-
+#prediction-3d-div_src{
+	display: none;
+}
 

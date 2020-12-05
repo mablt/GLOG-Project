@@ -75,25 +75,22 @@ class ProteinRepository():
     def get_protein_informations_by_id(self, id):
         protein = self.get_protein_by_id(id)
         data = {
+            "id": protein.get_id(),
             "name": protein.get_name(),
             "species": protein.get_species(),
             "length": protein.get_length(),
             "gene": protein.get_gene(),
             "pdb": protein.get_pdb(),
             "2D_prediction": protein.get_2D_prediction_figure(),
-            "ramachandran": protein.get_ramachandran_figure()
         }
         return data
     
     def make_blast(self, id):
-        # protein = self.proteins.get(id)
-        # if protein.get_blast_figure() is None:
-        #     protein.make_blast()
-        # return protein.get_blast()
-         
-        # TODO
+        protein = self.proteins.get(id)
+        if protein.get_blast_ids() is None:
+            protein.make_blast()
+        return protein.get_blast_ids()
         
-        pass
     
     def make_ramachandran(self, id):
         protein = self.proteins.get(id)
