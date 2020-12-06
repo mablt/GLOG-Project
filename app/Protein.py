@@ -34,8 +34,6 @@ class Protein():
         self.make_2D_prediction()
         self.blast_ids = self.ramachandran_figure = None
         self.import_xml_data_from_uniprot()
-        # self.make_ramachandran()
-        self.make_blast()
 
     def import_pdb_file_content(self):
         """
@@ -91,6 +89,18 @@ class Protein():
             long_id = search["result_set"][i]["identifier"]
             id = long_id.split('_')[0]   # Remove '_1' at the end of the ID
             self.blast_ids.append(id)
+            
+    def encode_2D_prediction_figure(self, prediction_figure):
+        img = io.BytesIO()
+        prediction_figure.savefig(img, format='png', bbox_inches='tight')
+        img.seek(0)
+        encoded = base64.b64encode(img.getvalue())
+        return encoded.decode('utf-8')
+
+    def encode_ramachandran_figure(self, ramachandran_figure):
+        ramachandran_figure.seek(0)
+        encoded = base64.b64encode(ramachandran_figure.read())
+        return encoded.decode('utf-8')
 
     def get_pdb(self):
         return self.pdb_content
@@ -122,14 +132,3 @@ class Protein():
     def get_ramachandran_figure(self):
         return self.ramachandran_figure
 
-    def encode_2D_prediction_figure(self, prediction_figure):
-        img = io.BytesIO()
-        prediction_figure.savefig(img, format='png', bbox_inches='tight')
-        img.seek(0)
-        encoded = base64.b64encode(img.getvalue())
-        return encoded.decode('utf-8')
-
-    def encode_ramachandran_figure(self, ramachandran_figure):
-        ramachandran_figure.seek(0)
-        encoded = base64.b64encode(ramachandran_figure.read())
-        return encoded.decode('utf-8')
