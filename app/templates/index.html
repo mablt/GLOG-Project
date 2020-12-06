@@ -13,6 +13,7 @@
 	<script src="{{ url_for('static', filename='js/jquery-1.7.min.js') }}" charset="utf-8"></script>
 	<script src="{{ url_for('static', filename='js/Three49custom.js') }}" charset="utf-8"></script>
 	<script src="{{ url_for('static', filename='js/GLmol.js') }}" charset="utf-8"></script>
+	
 </head>
 
 <body>
@@ -20,6 +21,10 @@
 		<div class="row" id="header-row">
 		</div>
 		<div class="row" id="visualisation-row">
+
+
+			<!------------------------------- COLUMN 1 ------------------------------->
+
 			<div class="column1" id="nav-column">
 				<nav class="main-nav">
 						<ul class="main-nav-ul">
@@ -139,22 +144,25 @@
 
 
 			</div>
+
+
+			<!------------------------------- COLUMN 2 ------------------------------->
+
 			<div class="column2">
 				<div id="prediction-3d-div">
 					<canvas id="prediction-3d"></canvas>
 				</div>
 				<textarea id="prediction-3d-div_src" ></textarea>
 
-				<div id="prediction">
-					<div id="prediction-figure">
-						<!-- <img src="data:image/png;base64,{{figure_2D}}"> -->
-					</div>
-					<div id="prediction-legend"></div>
-					<!-- <img src="{{ url_for('static', filename='img/legend.png') }}"> -->
+				<div id="prediction-2d-div">
+					<div id="prediction-2d-figure"></div>
+					<div id="prediction-2d-legend"></div>
 				</div>
 				
 			</div>
 
+
+			<!------------------------------- COLUMN 3 ------------------------------->
 
 			<div class="column3" id="info-column">
 				<div class="info-table">
@@ -187,9 +195,7 @@
 
 				</div>
 
-				<div id="results-actions">
-				</div>
-
+				<div id="results-actions"></div>
 
 			</div>
 
@@ -200,64 +206,7 @@
 
 
 	</div>
-
-	<!-- Button onclick event management -->
-	<script>
-
-		var buttons = document.querySelectorAll('#dpdwn');
-		for (var i=0 ; i < buttons.length ; i++){
-				buttons[i].onclick = function(){
-					$("#prediction-3d-div").empty();
-					$("#results-actions").empty();
-					$.post('/'+this.value).done(function(protein_data){
-						$("#prediction-3d-div_src").html(protein_data["pdb"]);
-						$("#protein-name").html(protein_data["name"]);
-						$("#organism").html(protein_data["species"]);
-						$("#gene-name").html(protein_data["gene"]);
-						$("#protein-id").html(protein_data["id"]);
-						$("#protein-length").html(protein_data["length"]);
-						// 3D visualisation with GLmol integration
-						var prediction_3d = new GLmol("prediction-3d-div", true);
-						prediction_3d.loadMolecule();
-						$("#prediction-figure").html("<img src='data:image/png;base64,"+protein_data["2D_prediction"]+"''>")
-						$("#prediction-legend").html("<img src='{{ url_for('static', filename='img/legend.png') }}'>")
-					})
-			  	};
-		}
-
-		
-		
-	
-		var actionsButton = document.querySelectorAll("#actions-button");
-		for (var i=0 ; i < actionsButton.length ; i++){
-			actionsButton[i].onclick = function(){
-				$("#results-actions").html("");
-
-				if(this.value == "blast"){
-					$("#results-actions").html('<p>Le blast est en cours ...</p>')
-					$.post('/'+$("#protein-id").text()+'/blast').done(function(blast_ids){
-						id1 = blast_ids[0];
-						id2 = blast_ids[1];
-						id3 = blast_ids[2];
-						var data = "<a href='https://www.rcsb.org/structure/"+id1+"' target='_blank'>"+id1+"</a> <br> <a href='https://www.rcsb.org/structure/"+id2+"' target='_blank'>"+id2+"</a> <br> <a href='https://www.rcsb.org/structure/"+id3+"' target='_blank'>"+id3+"</a> <br>";
-						$("#results-actions").html(data);
-					}).fail( function(){
-						$("#results-actions").html("<p>Le blast n'a pas fonctionné !</p>")
-					});
-				}
-				else if(this.value == "ramachandran"){
-					$("#results-actions").html('<p>Le ramachandran est en cours ...</p>')
-					$.post('/'+$("#protein-id").text()+'/ramachandran').done(function(response){
-						var data = "<img src='data:image/png;base64,"+response+"''>"
-						$("#results-actions").html(data);
-					}).fail( function(){
-						$("#results-actions").html("<p>Le ramachandran n'a pas fonctionné !</p>")
-					});
-				}
-				
-			  };
-			}
-	</script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}" charset="utf-8"></script>
 
 </body>
 
