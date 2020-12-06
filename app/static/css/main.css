@@ -133,7 +133,7 @@ textarea{
 
 /* 2D prediction */
 
-#prediction{
+#prediction-2d-div{
 	height: 50%;
 }
 
@@ -141,8 +141,11 @@ textarea{
 	position: absolute; 
 }
 
+#prediction-3d-div_src{
+	display: none;
+}
 
-#prediction-figure{
+#prediction-2d-figure{
 	width: 90%;
 	display: table-cell;
 	border-bottom: solid #3D3D3D;
@@ -193,8 +196,6 @@ td{
 	color : white;
 }
 
-
-#prediction-3d-div_src{
-	display: none;
+#results-actions{
+	padding: 10px;
 }
-
