@@ -85,7 +85,7 @@ for (var i=0 ; i < proteinsButtons.length ; i++){
         $("#prediction-2d-figure").empty();
         $("#prediction-2d-legend").empty();
         // Add loading GIF to tell user to wait
-        $("#prediction-3d-div").html("<img src='/static/img/loading.gif'>");
+        $("#prediction-3d-div").html("<img src='/static/img/loading.gif' height='100'>");
         $.post('/'+this.value).done(function(protein_data){
             // Remove the GIF
             $("#prediction-3d-div").empty();
