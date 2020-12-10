@@ -1,5 +1,11 @@
 
-//TODO Make the header !!!!!!!!!!!!
+/**
+* @file Management of buttons of the webpage of the project
+* @author ALVES Marine, CARRIAT Mélanie, CORNIER Alexandre, DRANCÉ Martin, JELIN Rémy and NEUHAUS Abdelghani,  BOLTEAU Mathieu  <mathieu.bolteau1@gmail.com>
+* @copyright Copyright (C) 2020 ALVES Marine, BOLTEAU Mathieu, CARRIAT Mélanie, CORNIER Alexandre, DRANCÉ Martin, JELIN Rémy and NEUHAUS Abdelghani
+* @license GNU-GPL3
+* @version 1.0.0
+*/
 
 
 /** 
@@ -9,7 +15,7 @@
 function addProteinDataToWebpage(protein_data){
     $("#prediction-3d-div_src").html(protein_data["pdb"]);
     $("#protein-name").html(protein_data["name"]);
-    $("#organism").html(protein_data["species"]);
+    $("#organism").html(protein_data["organism"]);
     $("#gene-name").html(protein_data["gene"]);
     $("#protein-id").html(protein_data["id"]);
     $("#protein-length").html(protein_data["length"]);
@@ -39,7 +45,7 @@ function add2DPrediction(encodedFigure){
 
 
 /** 
-* Add links of the  3 better Blast hits of the blast done executed in backend.
+* Add links of the 3 better Blast hits of the Blast executed in backend.
 */
 function addBlastData(){
     $("#results-actions").html('<p>Le blast est en cours ...</p>')
@@ -78,7 +84,11 @@ for (var i=0 ; i < proteinsButtons.length ; i++){
         $("#results-actions").empty();
         $("#prediction-2d-figure").empty();
         $("#prediction-2d-legend").empty();
+        // Add loading GIF to tell user to wait
+        $("#prediction-3d-div").html("<img src='/static/img/loading.gif'>");
         $.post('/'+this.value).done(function(protein_data){
+            // Remove the GIF
+            $("#prediction-3d-div").empty();
             addProteinDataToWebpage(protein_data);
             
         })

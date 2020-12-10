@@ -119,31 +119,50 @@ textarea{
 
 /* 3D visualisation */
 
-#prediction-3d-div{
-	height: 50%;
+#prediction-3d{ 				
+	position: absolute; 
+}
+
+#prediction-3d-title{
+	height: 2.5%;
 	margin: 0;
 	padding : 0;
 	background-color: black;
+	color : white;
+	border-bottom: none;
+}
+
+#prediction-3d-div{
+	height: 47.5%;
+	margin: 0;
+	padding : 0;
+	background-color: black;
+	border-top: none;
 }
 
 #prediction-3d-div_src{
 	margin:0;
 	padding: 0;
+	display: none;
 }
 
 /* 2D prediction */
 
-#prediction-2d-div{
-	height: 50%;
+#prediction-2d-title{
+	height: 2.5%;
 }
 
-#prediction-3d{ 
+#prediction-2d-div{
+	height: 47.5%;
+}
+
+/* #prediction-3d{ 				
 	position: absolute; 
 }
 
 #prediction-3d-div_src{
 	display: none;
-}
+} */
 
 #prediction-2d-figure{
 	width: 90%;
