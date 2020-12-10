@@ -2,8 +2,8 @@
 /**
 * @file Management of buttons of the webpage of the project
 * @author ALVES Marine, CARRIAT Mélanie, CORNIER Alexandre, DRANCÉ Martin, JELIN Rémy and NEUHAUS Abdelghani,  BOLTEAU Mathieu  <mathieu.bolteau1@gmail.com>
-* @copyright Copyright (C) 2020 ALVES Marine, BOLTEAU Mathieu, CARRIAT Mélanie, CORNIER Alexandre, DRANCÉ Martin, JELIN Rémy and NEUHAUS Abdelghani
-* @license GNU-GPL3
+* @copyright Copyright (C) 2020, ALVES M., BOLTEAU M., CARRIAT M., CORNIER A., DRANCÉ M., JELIN R. and NEUHAUS A.
+* @license GNU-GPLv3
 * @version 1.0.0
 */
 
