@@ -17,11 +17,11 @@ def get_pdb(id):  # A renommer
  
 @app.route('/<id>/blast', methods = ['POST', 'GET'])
 def do_blast(id):
-    blast_ids = PROTEIN_REPOSITORY.make_blast(id)
+    blast_ids = PROTEIN_REPOSITORY.get_blast(id)
     return jsonify(blast_ids)
    
 @app.route('/<id>/ramachandran', methods = ['POST', 'GET'])
 def do_ramachandran(id):
-    ramachandran_figure = PROTEIN_REPOSITORY.make_ramachandran(id)
+    ramachandran_figure = PROTEIN_REPOSITORY.get_ramachandran(id)
     return jsonify(ramachandran_figure)
    
