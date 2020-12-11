@@ -1,9 +1,63 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+PDBHandler.py: PDBHandler class of the GLOG Project.
+"""
+
+__author__ = "ALVES Marine, BOLTEAU Mathieu, CARRIAT Mélanie, CORNIER Alexandre, DRANCÉ Martin, JELIN Rémy and NEUHAUS Abdelghani"
+__copyright__ = "Copyright (C) 2020, ALVES M., BOLTEAU M., CARRIAT M., CORNIER A., DRANCÉ M., JELIN R. and NEUHAUS A."
+__license__ = " GNU General Public License v3"
+__version__ = "1.0.0"
+
+# Libraries imports
 import os
 from Bio.PDB import PDBParser
 from Bio.PDB.DSSP import DSSP
 
 
 class PDBHandler():
+    """
+    Class to extract and create informations from PDB file and XML request.
+
+    ...
+
+    Attributes
+    ----------
+    m_id                (str)       : Id of the protein
+    m_folder              (str)       : Path to the PDB folder
+    m_rawSeq               (list)       : temporary list that contains the raw sequence
+    m_helixPos           (list)       : Contains sorted data for helixes
+    m_sheetPos            (list)       : Contains sorted data for sheets
+    m_tmpHelixPos          (list)       : Use to create m_helixPos
+    m_tmpSheetPos           (list)     : Use to create m_sheetPos
+    m_finalData         (list)       : Data that will be use by the ProteinPlotter class
+
+    Methods
+    -------
+    load_data():
+        Load all the pdb files in the folder. Create BIO.PDB.DSSP.DSSP object to stock each data's file
+    get_secondary_structure():
+        Retrieve the DSSP code letters of each amino acid of the protein
+    transform_by_letter():
+       Transform the data in entry (idStructure format) into a idConstruction style
+    get_coordinates():
+        Retrieves the position of each H and S in the m_rawSeq list
+    split_list():
+        Return the list index
+    TopBottom():
+        Return the first and last values of sublist of numbers
+    get_coordinates_list_helix()
+        Split the list base on the index in tmpHelixList
+    get_coordinates_list_sheet():
+        Split the list base on the index in tmpSheetList
+    sorted_data2draw():
+        Bubble sort
+    data2draw():
+          Merge helix and sheet coordinates into a list then do a bubble sort to sort sublists by coordinates
+    data_creation():
+        Create the final data, use with ProteinPlotter class
+    """
 
     def __init__(self, id, folder):
         # Needed to initialize
@@ -87,7 +141,15 @@ class PDBHandler():
 
 
     def split_list(self, n):
-        """Return the list index"""
+        """
+        Return the list index
+        
+        Args:
+            n (list): list to get the indexes from
+
+        Returns:
+            list of indexes
+            """
         return [(x+1) for x,y in zip(n, n[1:]) if y-x != 1]
 
 
@@ -95,6 +157,12 @@ class PDBHandler():
         """
         Return the first and last values of sublist of numbers
         eg: [[1,2,3,4], [5,6,7]] return [[1,4], [5,7]]
+
+         Args:
+            data (list): list to get first and last values of sublist of numbers
+
+        Returns:
+            list first and last values
         """
         res = []
         tmp = None
@@ -145,6 +213,12 @@ class PDBHandler():
     def sorted_data2draw(self, a):
         """
         Bubble sort
+
+        Args:
+            a (list): list to sort
+
+        Returns:
+            sorted list
         """
         n = len(a)
         # Traverser tous les éléments du tableau

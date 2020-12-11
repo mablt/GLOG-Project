@@ -37,7 +37,7 @@ class Protein():
     name              (str)       : Name of the protein
     gene                (str)       : Name of the gene which the porotein come
     organism           (str)       : Name of the specie for the protein
-    m_seq               (str)       : Sequence of the protein
+    seq               (str)       : Sequence of the protein
     length            (int)       : Length of the protein
     xml                 (Element)   : XML Element of the XML file parsed
     pdb_content         (str)       : Content of the PDB file as a string
@@ -109,7 +109,7 @@ class Protein():
             self.gene = self.gene.text
         self.organism = self.xml.find(
             "{}entry/{}organism/{}name".format(path, path, path)).text
-        self.m_seq = self.xml.find(
+        self.seq = self.xml.find(
             "{}entry/{}sequence".format(path, path)).text
         self.length = self.xml.find(
             "{}entry/{}sequence".format(path, path)).attrib['length']
@@ -130,7 +130,7 @@ class Protein():
         """
         Make Blast for the protein and add the ids of the three first hits to 'self.blast_ids' variable
         """
-        query = Query(self.m_seq, query_type="sequence",
+        query = Query(self.seq, query_type="sequence",
                       return_type="polymer_entity")
         search = query.search()
         self.blast_ids = list()
