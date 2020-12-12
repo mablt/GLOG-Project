@@ -23,7 +23,7 @@ class SheetPlotter(graphics.FeaturePlotter):
 
     Attributes
     ----------
-    _head_width              (float)       : width of the head of the arrow that represents the sheet
+    _head_width             (float)       : width of the head of the arrow that represents the sheet
     _tail_width             (float)       : width of the tail of the arrow that represents the sheet
 
     Methods
@@ -38,7 +38,6 @@ class SheetPlotter(graphics.FeaturePlotter):
         self._head_width = head_width
         self._tail_width = tail_width
 
-
     def matches(self, feature):
         """
         Check whether this class is applicable for drawing a feature
@@ -47,7 +46,7 @@ class SheetPlotter(graphics.FeaturePlotter):
             feature (class biotite.sequence.Feature) : Represent a single sequence feature that describes a functionnal part of a sequence
 
         Returns:
-            Boolean whether the feature is an helix or not
+            (bool): Boolean whether the feature is an helix or not
         """
         if feature.key == "SecStr":
             if "sec_str_type" in feature.qual:
@@ -61,15 +60,13 @@ class SheetPlotter(graphics.FeaturePlotter):
 
         Args:
             axes, feature, bbox, loc, style_param : matplotlib parameters to create the plot that will be gave by ProteinPlotter class
-
-        Returns:
         """
         x = bbox.x0
         y = bbox.y0 + bbox.height/2
         dx = bbox.width
         dy = 0
 
-        if  loc.defect & seq.Location.Defect.MISS_RIGHT:
+        if loc.defect & seq.Location.Defect.MISS_RIGHT:
             # If the feature extends into the prevoius or next line
             # do not draw an arrow head
             draw_head = False

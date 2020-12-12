@@ -186,7 +186,7 @@ class Protein():
             "length": self.length,
             "gene": self.gene,
             "pdb": self.pdb_content,
-            "2D_prediction":self.prediction_figure,
+            "2D_prediction": self.prediction_figure,
         }
         return attributes
 

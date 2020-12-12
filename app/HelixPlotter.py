@@ -17,14 +17,12 @@ import biotite.sequence.graphics as graphics
 from matplotlib.patches import Rectangle
 import numpy as np
 
+
 class HelixPlotter(graphics.FeaturePlotter):
     """
     Class to create protein's helix visualization.
 
     ...
-
-    Attributes
-    ----------
 
     Methods
     -------
@@ -45,7 +43,7 @@ class HelixPlotter(graphics.FeaturePlotter):
             feature (class biotite.sequence.Feature) : Represent a single sequence feature that describes a functionnal part of a sequence
 
         Returns:
-            Boolean whether the feature is an helix or not
+            bool: Boolean whether the feature is an helix or not
         """
         if feature.key == "SecStr":
             if "sec_str_type" in feature.qual:
@@ -59,8 +57,6 @@ class HelixPlotter(graphics.FeaturePlotter):
 
         Args:
             axes, feature, bbox, loc, style_param : matplotlib parameters to create the plot that will be gave by ProteinPlotter class
-
-        Returns:
         """
         # Approx. 1 turn per 3.6 residues to resemble natural helix
         n_turns = np.ceil((loc.last - loc.first + 1) / 3.6)
@@ -75,10 +71,7 @@ class HelixPlotter(graphics.FeaturePlotter):
         y_val += bbox.y0
 
         # Draw white background to overlay the guiding line
-        background = Rectangle(
-            bbox.p0, bbox.width, bbox.height, color="white", linewidth=0
-        )
+        background = Rectangle(bbox.p0, bbox.width,
+                               bbox.height, color="white", linewidth=0)
         axes.add_patch(background)
-        axes.plot(
-            x_val, y_val, linewidth=2, color=biotite.colors["dimgreen"]
-        )
+        axes.plot(x_val, y_val, linewidth=2, color=biotite.colors["dimgreen"])

@@ -1,220 +1,224 @@
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
-<head>
-	<meta charset="UTF-8">
-	<title>Visualisation</title>
+	<head>
+		<title>Visualisation</title>
+		<meta charset="UTF-8">
+		<meta name="author" content="ALVES Marine, BOLTEAU Mathieu, CARRIAT Mélanie, CORNIER Alexandre, DRANCÉ Martin, JELIN Rémy and NEUHAUS Abdelghani">
+		<meta name="description" content="Webpage of the GLOG project">
+		<meta name="keywords" content="Protein-prediction, 3D-visualisation, protein, bordeaux-university">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+			integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> 
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+		<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+		<script src="{{ url_for('static', filename='js/jquery-1.7.min.js') }}" charset="utf-8"></script>
+		<script src="{{ url_for('static', filename='js/Three49custom.js') }}" charset="utf-8"></script>
+		<script src="{{ url_for('static', filename='js/GLmol.js') }}" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<div class="row" id="header-row"></div>
+
+			<div class="row" id="visualisation-row">
+
+				<!------------------------------- COLUMN 1 ------------------------------->
+
+				<div class="column1" id="nav-column">
+					<nav class="main-nav">
+							<ul class="main-nav-ul">
+								<li><a id="nav-title" href="#">- Espèces -</a></li>
 
 
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-		 integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> 
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-	<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
-	<script src="{{ url_for('static', filename='js/jquery-1.7.min.js') }}" charset="utf-8"></script>
-	<script src="{{ url_for('static', filename='js/Three49custom.js') }}" charset="utf-8"></script>
-	<script src="{{ url_for('static', filename='js/GLmol.js') }}" charset="utf-8"></script>
-	
-</head>
+								<!-- FROGS -->
+								<ul class="spieces-nav-ul">
+									<li> <a href="#">Rana castebeiana <span class="sub-arrow"></span></a>
+										<ul class="protein-nav-ul">
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P0DOX0">Cytochrome P450 27C1 (P0DOX0)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P07797">Ferritin, lower subunit (P07797)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P31226">Saxiphilin (P31226)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P40757">Allantoinase, mitochondrial (P40757)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P51464">Argininosuccinate lyase (P51464)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q7T1K4">Androgen receptor (Q7T1K4)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q07081">Olfactomedin (Q07081)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q91309">6-phosphofructo-2-kinase/fructose-2,6-bisphosphatase (Q91309)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q91311">Alpha-crystallin A chain (Q91311)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q91312">Alpha-crystallin B chain (Q91312)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q92104">Cytochrome P450 11B, mitochondrial (Q92104)</button> </li>
+										</ul>
+								</ul>
+								<ul class="spieces-nav-ul">
+									<li> <a href="#">Rana esculenta <span class="sub-arrow"></span></a>
+										<ul class="protein-nav-ul">
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P02507">Alpha-crystallin A chain (P02507)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P02589">Troponin C, skeletal muscle (P02589)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P50501">Aquaporin FA-CHIP (P50501)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q0MVP0">Tyrosinase (Q0MVP0)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q333S9">Cannabinoid receptor 1 (Q333S9)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q92105">Sarcoplasmic/endoplasmic reticulum calcium ATPase 1 (Q92105)</button> </li>
+										</ul>
+									</li>
+								</ul>
+								<ul class="spieces-nav-ul">
+									<li> <a href="#"> Rana temporaria<span class="sub-arrow"></span></a>
+										<ul class="protein-nav-ul">
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P02508">Alpha-crystallin A chain (P02508)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P02530">Gamma-crystallin 1 (P02530)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P02532">Rho crystallin (P02532)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P07317">Beta-crystallin A1 (P07317)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P13105">Tropomyosin alpha-1 chain (P13105)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P56516">Rhodopsin (P56516)</button> </li>
+										</ul>
+									</li>
+								</ul>
 
-<body>
-	<div class="container-fluid">
-		<div class="row" id="header-row">
-		</div>
-		<div class="row" id="visualisation-row">
+
+								<!-- LIZARDS -->
+								<ul class="spieces-nav-ul">
+									<li> <a href="#"> Podarcis siculus<span class="sub-arrow"></span></a>
+										<ul class="protein-nav-ul">
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q4U4D2">Melanopsin (Q4U4D2)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q708T3">Metallothionein (Q708T3)</button> </li>
+										</ul>
+									</li>
+								</ul>
+								<ul class="spieces-nav-ul">
+									<li> <a href="#">Zootoca vivipara<span class="sub-arrow"></span></a>
+										<ul class="protein-nav-ul">
+											<li> <button type="button" id="dpdwn" name="prot_button" value="O48089">Epididymal secretory protein 4 (P35578)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P35578">Cytochrome b (O48089)</button> </li>
+										</ul>
+									</li>
+								</ul>
 
 
-			<!------------------------------- COLUMN 1 ------------------------------->
+								<!-- BUTTERFLIES -->
+								<ul class="spieces-nav-ul">
+									<li> <a href="#"> Papilonoidea<span class="sub-arrow"></span></a>
+										<ul class="protein-nav-ul">
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P09464">Bilin-binding protein (P09464)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P84156">Defensin ARD1 (P84156)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q6EV21">40S ribosomal protein S28 (Q6EV21)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q6EV23">40S ribosomal protein S23 (Q6EV23)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q9GV36">Pierisin (Q9GV36)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q9U8Q4">Pierisin (Q9U8Q4)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q25214">Protein scalloped (Q25214)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q27756">Cytochrome P450 6B3 (Q27756)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q27902">Cytochrome P450 6B4 (Q27902)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q95036">
+												Cytochrome P450 6B5 (Q95036)</button> </li>
+										</ul>
+									</li>
+								</ul>
 
-			<div class="column1" id="nav-column">
-				<nav class="main-nav">
-						<ul class="main-nav-ul">
-							<li><a id="nav-title" href="#">- Espèces -</a></li>
-							<ul class="spieces-nav-ul">
-								<li> <a href="#">Rana castebeiana <span class="sub-arrow"></span></a>
-									<ul class="protein-nav-ul">
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P0DOX0">Cytochrome P450 27C1 (P0DOX0)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P07797">Ferritin, lower subunit (P07797)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P31226">Saxiphilin (P31226)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P40757">Allantoinase, mitochondrial (P40757)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P51464">Argininosuccinate lyase (P51464)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q7T1K4">Androgen receptor (Q7T1K4)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q07081">Olfactomedin (Q07081)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q91309">6-phosphofructo-2-kinase/fructose-2,6-bisphosphatase (Q91309)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q91311">Alpha-crystallin A chain (Q91311)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q91312">Alpha-crystallin B chain (Q91312)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q92104">Cytochrome P450 11B, mitochondrial (Q92104)</button> </li>
-									</ul>
+
+								<!-- VIPERS -->
+								<ul class="spieces-nav-ul">
+									<li> <a href="#"> Vipera ammodytes<span class="sub-arrow"></span></a>
+										<ul class="protein-nav-ul">
+											<li> <button type="button" id="dpdwn" name="prot_button" value="A0A1I9KNP0">Vaa serine proteinase homolog 1 (A0A1I9KNP0)</button> </li>
+										</ul>
+									</li>
+								</ul>
+								<ul class="spieces-nav-ul">
+									<li> <a href="#"> Vipera aspis<span class="sub-arrow"></span></a>
+										<ul class="protein-nav-ul">
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q8JFG0">Basic phospholipase A2 vaspin B chain (Q8JFG0)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q10754">Acidic phospholipase A2 inhibitor vaspin A chain (Q10754)</button> </li>
+										</ul>
+									</li>
+								</ul>
+								<ul class="spieces-nav-ul">
+									<li> <a href="#"> Vipera berus<span class="sub-arrow"></span></a>
+										<ul class="protein-nav-ul">
+											<li> <button type="button" id="dpdwn" name="prot_button" value="A4VBF0">Acidic phospholipase A2 inhibitor chain HPD-1I (A4VBF0)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="B7FDI0">Cysteine-rich venom protein (B7FDI0)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="B7FDI1">Cysteine-rich venom protein (B7FDI1)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="E5AJX2">Snake venom serine protease nikobin (E5AJX2)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="E5AJX3">Kunitz-type serine protease inhibitor ki-VN (E5AJX3)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P0C2D7">L-amino-acid oxidase (P0C2D7)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P0C6A6">Disintegrin VB7A (P0C6A6)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P0C6A7">Disintegrin VB7B (P0C6A7)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="P31854">Basic phospholipase A2 Pla2Vb (P31854)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q1RP78">Basic phospholipase A2 chain HDP-2P (Q1RP78)</button> </li>
+											<li> <button type="button" id="dpdwn" name="prot_button" value="Q1RP79">Basic phospholipase A2 chain HDP-1P (Q1RP79)</button> </li>
+										</ul>
+									</li>
+								</ul>
+
+
 							</ul>
-							<ul class="spieces-nav-ul">
-								<li> <a href="#">Rana esculenta <span class="sub-arrow"></span></a>
-									<ul class="protein-nav-ul">
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P02507">Alpha-crystallin A chain (P02507)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P02589">Troponin C, skeletal muscle (P02589)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P50501">Aquaporin FA-CHIP (P50501)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q0MVP0">Tyrosinase (Q0MVP0)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q333S9">Cannabinoid receptor 1 (Q333S9)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q92105">Sarcoplasmic/endoplasmic reticulum calcium ATPase 1 (Q92105)</button> </li>
-									</ul>
-								</li>
-							</ul>
-							<ul class="spieces-nav-ul">
-								<li> <a href="#"> Rana temporaria<span class="sub-arrow"></span></a>
-									<ul class="protein-nav-ul">
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P02508">Alpha-crystallin A chain (P02508)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P02530">Gamma-crystallin 1 (P02530)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P02532">Rho crystallin (P02532)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P07317">Beta-crystallin A1 (P07317)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P13105">Tropomyosin alpha-1 chain (P13105)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P56516">Rhodopsin (P56516)</button> </li>
-									</ul>
-								</li>
-							</ul>
-							<!-- LEZARDS -->
-							<ul class="spieces-nav-ul">
-								<li> <a href="#"> Podarcis siculus<span class="sub-arrow"></span></a>
-									<ul class="protein-nav-ul">
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q4U4D2">Melanopsin (Q4U4D2)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q708T3">Metallothionein (Q708T3)</button> </li>
-									</ul>
-								</li>
-							</ul>
-							<ul class="spieces-nav-ul">
-								<li> <a href="#">Zootoca vivipara<span class="sub-arrow"></span></a>
-									<ul class="protein-nav-ul">
-										<li> <button type="button" id="dpdwn" name="prot_button" value="O48089">Epididymal secretory protein 4 (P35578)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P35578">Cytochrome b (O48089)</button> </li>
-									</ul>
-								</li>
-							</ul>
-							<!-- PAPILLONS -->
-							<ul class="spieces-nav-ul">
-								<li> <a href="#"> Papilonoidea<span class="sub-arrow"></span></a>
-									<ul class="protein-nav-ul">
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P09464">Bilin-binding protein (P09464)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P84156">Defensin ARD1 (P84156)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q6EV21">40S ribosomal protein S28 (Q6EV21)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q6EV23">40S ribosomal protein S23 (Q6EV23)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q9GV36">Pierisin (Q9GV36)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q9U8Q4">Pierisin (Q9U8Q4)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q25214">Protein scalloped (Q25214)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q27756">Cytochrome P450 6B3 (Q27756)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q27902">Cytochrome P450 6B4 (Q27902)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q95036">
-											Cytochrome P450 6B5 (Q95036)</button> </li>
-									</ul>
-								</li>
-							</ul>
-							<!-- VIPERES -->
-							<ul class="spieces-nav-ul">
-								<li> <a href="#"> Vipera ammodytes<span class="sub-arrow"></span></a>
-									<ul class="protein-nav-ul">
-										<li> <button type="button" id="dpdwn" name="prot_button" value="A0A1I9KNP0">Vaa serine proteinase homolog 1 (A0A1I9KNP0)</button> </li>
-									</ul>
-								</li>
-							</ul>
-							<ul class="spieces-nav-ul">
-								<li> <a href="#"> Vipera aspis<span class="sub-arrow"></span></a>
-									<ul class="protein-nav-ul">
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q8JFG0">Basic phospholipase A2 vaspin B chain (Q8JFG0)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q10754">Acidic phospholipase A2 inhibitor vaspin A chain (Q10754)</button> </li>
-									</ul>
-								</li>
-							</ul>
-							<ul class="spieces-nav-ul">
-								<li> <a href="#"> Vipera berus<span class="sub-arrow"></span></a>
-									<ul class="protein-nav-ul">
-										<li> <button type="button" id="dpdwn" name="prot_button" value="A4VBF0">Acidic phospholipase A2 inhibitor chain HPD-1I (A4VBF0)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="B7FDI0">Cysteine-rich venom protein (B7FDI0)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="B7FDI1">Cysteine-rich venom protein (B7FDI1)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="E5AJX2">Snake venom serine protease nikobin (E5AJX2)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="E5AJX3">Kunitz-type serine protease inhibitor ki-VN (E5AJX3)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P0C2D7">L-amino-acid oxidase (P0C2D7)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P0C6A6">Disintegrin VB7A (P0C6A6)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P0C6A7">Disintegrin VB7B (P0C6A7)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="P31854">Basic phospholipase A2 Pla2Vb (P31854)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q1RP78">Basic phospholipase A2 chain HDP-2P (Q1RP78)</button> </li>
-										<li> <button type="button" id="dpdwn" name="prot_button" value="Q1RP79">Basic phospholipase A2 chain HDP-1P (Q1RP79)</button> </li>
-									</ul>
-								</li>
-							</ul>
+					</nav>
 
 
-						</ul>
-				</nav>
-
-
-			</div>
-
-
-			<!------------------------------- COLUMN 2 ------------------------------->
-
-			<div class="column2">
-				<div id="prediction-3d-title">
-					Visualisation 3D
 				</div>
-				<div id="prediction-3d-div">
-					<canvas id="prediction-3d"></canvas>
-				</div>
-				<textarea id="prediction-3d-div_src" ></textarea>
-				
-				<div id="prediction-2d-title">
-					Prédiction 2D
-				</div>
-				<div id="prediction-2d-div">
+
+
+				<!------------------------------- COLUMN 2 ------------------------------->
+
+				<div class="column2">
+					<div id="prediction-3d-title">
+						Visualisation 3D
+					</div>
+					<div id="prediction-3d-div">
+						<canvas id="prediction-3d"></canvas>
+					</div>
+					<textarea id="prediction-3d-div_src" ></textarea>
 					
-					<div id="prediction-2d-figure"></div>
-					<div id="prediction-2d-legend"></div>
+					<div id="prediction-2d-title">
+						Prédiction 2D
+					</div>
+					<div id="prediction-2d-div">
+						
+						<div id="prediction-2d-figure"></div>
+						<div id="prediction-2d-legend"></div>
+					</div>
+					
 				</div>
-				
+
+
+				<!------------------------------- COLUMN 3 ------------------------------->
+
+				<div class="column3" id="info-column">
+					<div class="info-table">
+						<table>
+							<tr>
+								<td>Nom de la protéine</td>
+								<td id="protein-name"></td>
+							</tr>
+							<tr>
+								<td>Organisme</td>
+								<td id="organism"></td>
+							</tr>
+							<tr>
+								<td>Nom du gène</td>
+								<td id="gene-name"></td>
+							</tr>
+							<tr>
+								<td>Id</td>
+								<td id="protein-id"></td>
+							</tr>
+							<tr>
+								<td>Longueur de la protéine</td>
+								<td id="protein-length"></td>
+							</tr>
+						</table>
+					</div>
+					<div class="actions">
+						<button type="button" id="actions-button" name="" value="blast"> Blast</button>
+						<button type="button" id="actions-button" name="" value="ramachandran"> Ramachandran</button>
+
+					</div>
+
+					<div id="results-actions"></div>
+
+				</div>
 			</div>
-
-
-			<!------------------------------- COLUMN 3 ------------------------------->
-
-			<div class="column3" id="info-column">
-				<div class="info-table">
-					<table>
-						<tr>
-							<td>Nom de la protéine</td>
-							<td id="protein-name"></td>
-						</tr>
-						<tr>
-							<td>Organisme</td>
-							<td id="organism"></td>
-						</tr>
-						<tr>
-							<td>Nom du gène</td>
-							<td id="gene-name"></td>
-						</tr>
-						<tr>
-							<td>Id</td>
-							<td id="protein-id"></td>
-						</tr>
-						<tr>
-							<td>Longueur de la protéine</td>
-							<td id="protein-length"></td>
-						</tr>
-					</table>
-				</div>
-				<div class="actions">
-					<button type="button" id="actions-button" name="" value="blast"> Blast</button>
-					<button type="button" id="actions-button" name="" value="ramachandran"> Ramachandran</button>
-
-				</div>
-
-				<div id="results-actions"></div>
-
-			</div>
-
 		</div>
 
+		<!-- JS functions import -->
+		<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}" charset="utf-8"></script>
 
-
-
-
-	</div>
-	<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}" charset="utf-8"></script>
-
-</body>
+	</body>
 
 </html>
