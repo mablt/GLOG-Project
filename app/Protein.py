@@ -119,7 +119,6 @@ class Protein():
         Make the ramachandran for the protein
         """
         path = "./app/pdb/"+self.id+".pdb"
-        data = phi_psi(path)  # ramachadran data
         # Create a tempfile to save the figure file
         figure = tempfile.TemporaryFile()
         plot(path, out=figure)
